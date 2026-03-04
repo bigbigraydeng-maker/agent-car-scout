@@ -8,21 +8,19 @@
  *   4. 提供系统状态监控
  */
 
-import dotenv from 'dotenv';
-import express from 'express';
-import cors from 'cors';
-import helmet from 'helmet';
-import morgan from 'morgan';
+require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+const helmet = require('helmet');
+const morgan = require('morgan');
 
 // 路由
-import apiRoutes from './api/routes.js';
+const apiRoutes = require('./api/routes');
 
 // 服务
-import scraperService from './services/scraper.js';
-import valuationService from './services/valuation.js';
-import trainingService from './services/training.js';
-
-dotenv.config();
+const scraperService = require('./services/scraper');
+const valuationService = require('./services/valuation');
+const trainingService = require('./services/training');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -90,4 +88,4 @@ app.listen(PORT, () => {
   console.log('⏰ Scheduled training started');
 });
 
-export default app;
+module.exports = app;

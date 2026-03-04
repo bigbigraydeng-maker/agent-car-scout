@@ -3,6 +3,7 @@
   "version": "3.0.0",
   "description": "Agent Car Scout - 多平台车辆数据爬取和市场估价系统",
   "main": "src/server.js",
+  "type": "commonjs",
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
