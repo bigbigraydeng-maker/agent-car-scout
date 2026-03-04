@@ -124,11 +124,18 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# local data files
-data/market_valuation_*.json
+# local data files - DO NOT COMMIT
+data/*.json
+data/*.md
+data/*.csv
 data/training_logs/
 data/reports/
 data/*.png
+data/.fb_scan_state.json
+
+# reports
+reports/*.json
+reports/*.md
 
 # logs
 logs

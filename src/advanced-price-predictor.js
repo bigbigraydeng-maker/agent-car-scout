@@ -22,7 +22,7 @@ class AdvancedPricePredictor {
    * 加载历史数据
    */
   loadHistoricalData() {
-    const dataDir = path.join(__dirname, 'data');
+    const dataDir = path.join(__dirname, '..', 'data');
     const files = fs.readdirSync(dataDir)
       .filter(f => f.startsWith('nz_cars') && f.endsWith('.json'))
       .sort()
@@ -493,7 +493,7 @@ async function main() {
     predictor.evaluate(testData);
 
     // 保存模型
-    const modelPath = path.join(__dirname, 'data', 'advanced_price_predictor.json');
+    const modelPath = path.join(__dirname, '..', 'data', 'advanced_price_predictor.json');
     predictor.saveModel(modelPath);
 
     // 测试预测

@@ -43,6 +43,57 @@ class AdvancedPricePredictor {
   }
 
   /**
+   * 解析 WOF/REGO 剩余月份
+   * 支持格式: "Aug 2025", "2025-08", "08/2025", 或月份数字
+   */
+  parseMonthsRemaining(dateStr) {
+    if (!dateStr) return 0;
+    
+    try {
+      const now = new Date('2026-03-04'); // 当前日期
+      let targetDate;
+      
+      // 尝试解析不同格式
+      const monthNames = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+      
+      // 格式1: "Aug 2025" 或 "August 2025"
+      const monthYearMatch = dateStr.toLowerCase().match(/([a-z]+)\s*(\d{4})/);
+      if (monthYearMatch) {
+        const monthIdx = monthNames.findIndex(m => monthYearMatch[1].startsWith(m));
+        if (monthIdx !== -1) {
+          targetDate = new Date(parseInt(monthYearMatch[2]), monthIdx, 1);
+        }
+      }
+      
+      // 格式2: "2025-08" 或 "08/2025"
+      if (!targetDate) {
+        const numericMatch = dateStr.match(/(\d{4})[-/](\d{1,2})/);
+        if (numericMatch) {
+          targetDate = new Date(parseInt(numericMatch[1]), parseInt(numericMatch[2]) - 1, 1);
+        }
+      }
+      
+      // 格式3: 纯数字（假设为月份数）
+      if (!targetDate) {
+        const months = parseInt(dateStr);
+        if (!isNaN(months)) {
+          return months;
+        }
+      }
+      
+      if (targetDate) {
+        const diffMonths = (targetDate.getFullYear() - now.getFullYear()) * 12 + 
+                          (targetDate.getMonth() - now.getMonth());
+        return Math.max(0, diffMonths);
+      }
+      
+      return 0;
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  /**
    * 高级特征工程
    */
   extractFeatures(vehicle) {
@@ -67,6 +118,14 @@ class AdvancedPricePredictor {
       // 对数特征（处理长尾分布）
       logMileage: Math.log(Math.max(1, mileage)),
       logAge: Math.log(Math.max(1, age)),
+      
+      // WOF/REGO 时间特征 (新增)
+      wofMonthsRemaining: this.parseMonthsRemaining(vehicle.wof),
+      regoMonthsRemaining: this.parseMonthsRemaining(vehicle.rego),
+      hasWof: vehicle.wof ? 1 : 0,
+      hasRego: vehicle.rego ? 1 : 0,
+      wofExpiringSoon: (this.parseMonthsRemaining(vehicle.wof) <= 3) ? 1 : 0,
+      regoExpiringSoon: (this.parseMonthsRemaining(vehicle.rego) <= 1) ? 1 : 0,
       
       // 比率特征
       yearMileageRatio: year / (mileage / 1000),
