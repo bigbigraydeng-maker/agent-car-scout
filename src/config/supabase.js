@@ -27,7 +27,7 @@ export const TABLES = {
   SCRAPING_JOBS: 'scraping_jobs'
 };
 
-module.exports = {
+exports = {
   supabase,
   supabaseAdmin,
   TABLES
