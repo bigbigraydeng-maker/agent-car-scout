@@ -1,6 +1,6 @@
 /**
  * Agent Car Scout - 主服务器
- * 
+ *
  * 功能：
  *   1. 提供API接口
  *   2. 管理爬取任务
@@ -8,19 +8,21 @@
  *   4. 提供系统状态监控
  */
 
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const helmet = require('helmet');
-const morgan = require('morgan');
+import dotenv from 'dotenv';
+import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
+import morgan from 'morgan';
 
 // 路由
-const apiRoutes = require('./api/routes');
+import apiRoutes from './api/routes.js';
 
 // 服务
-const scraperService = require('./services/scraper');
-const valuationService = require('./services/valuation');
-const trainingService = require('./services/training');
+import scraperService from './services/scraper.js';
+import valuationService from './services/valuation.js';
+import trainingService from './services/training.js';
+
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -88,4 +90,4 @@ app.listen(PORT, () => {
   console.log('⏰ Scheduled training started');
 });
 
-module.exports = app;
+export default app;
