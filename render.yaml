@@ -1,0 +1,54 @@
+# Render 配置文件
+
+# Web服务
+type: web
+env: node
+region: oregon
+
+# 构建配置
+buildCommand: npm install && npm run build
+startCommand: npm start
+
+# 环境变量
+envVars:
+  - key: NODE_ENV
+    value: production
+  - key: SUPABASE_URL
+    sync: false
+  - key: SUPABASE_ANON_KEY
+    sync: false
+  - key: SUPABASE_SERVICE_ROLE_KEY
+    sync: false
+  - key: PORT
+    value: 3000
+
+# 资源配置
+plan: free
+memory: 512
+disk: 1024
+
+# 后台工作器（用于定时任务）
+---
+type: worker
+env: node
+region: oregon
+
+# 构建配置
+buildCommand: npm install
+startCommand: node src/services/training/scheduler.js
+
+# 环境变量
+envVars:
+  - key: NODE_ENV
+    value: production
+  - key: SUPABASE_URL
+    sync: false
+  - key: SUPABASE_ANON_KEY
+    sync: false
+  - key: SUPABASE_SERVICE_ROLE_KEY
+    sync: false
+
+# 资源配置
+plan: free
+memory: 1024
+isk: 1024

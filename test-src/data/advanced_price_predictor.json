@@ -1,0 +1,2783 @@
+{
+  "models": {
+    "low": [
+      {
+        "isLeaf": true,
+        "prediction": 4500,
+        "samples": 22
+      },
+      {
+        "isLeaf": true,
+        "prediction": 4500,
+        "samples": 22
+      },
+      {
+        "isLeaf": true,
+        "prediction": 4500,
+        "samples": 22
+      },
+      {
+        "isLeaf": true,
+        "prediction": 4500,
+        "samples": 22
+      },
+      {
+        "isLeaf": true,
+        "prediction": 4500,
+        "samples": 22
+      },
+      {
+        "isLeaf": true,
+        "prediction": 4500,
+        "samples": 22
+      },
+      {
+        "isLeaf": true,
+        "prediction": 4500,
+        "samples": 22
+      },
+      {
+        "isLeaf": true,
+        "prediction": 4500,
+        "samples": 22
+      },
+      {
+        "isLeaf": true,
+        "prediction": 4500,
+        "samples": 22
+      },
+      {
+        "isLeaf": true,
+        "prediction": 4500,
+        "samples": 22
+      },
+      {
+        "isLeaf": true,
+        "prediction": 4500,
+        "samples": 22
+      },
+      {
+        "isLeaf": true,
+        "prediction": 4500,
+        "samples": 22
+      },
+      {
+        "isLeaf": true,
+        "prediction": 4500,
+        "samples": 22
+      },
+      {
+        "isLeaf": true,
+        "prediction": 4500,
+        "samples": 22
+      },
+      {
+        "isLeaf": true,
+        "prediction": 4500,
+        "samples": 22
+      },
+      {
+        "isLeaf": true,
+        "prediction": 4500,
+        "samples": 22
+      },
+      {
+        "isLeaf": true,
+        "prediction": 4500,
+        "samples": 22
+      },
+      {
+        "isLeaf": true,
+        "prediction": 4500,
+        "samples": 22
+      },
+      {
+        "isLeaf": true,
+        "prediction": 4500,
+        "samples": 22
+      },
+      {
+        "isLeaf": true,
+        "prediction": 4500,
+        "samples": 22
+      },
+      {
+        "isLeaf": true,
+        "prediction": 4500,
+        "samples": 22
+      },
+      {
+        "isLeaf": true,
+        "prediction": 4500,
+        "samples": 22
+      },
+      {
+        "isLeaf": true,
+        "prediction": 4500,
+        "samples": 22
+      },
+      {
+        "isLeaf": true,
+        "prediction": 4500,
+        "samples": 22
+      },
+      {
+        "isLeaf": true,
+        "prediction": 4500,
+        "samples": 22
+      },
+      {
+        "isLeaf": true,
+        "prediction": 4500,
+        "samples": 22
+      },
+      {
+        "isLeaf": true,
+        "prediction": 4500,
+        "samples": 22
+      },
+      {
+        "isLeaf": true,
+        "prediction": 4500,
+        "samples": 22
+      },
+      {
+        "isLeaf": true,
+        "prediction": 4500,
+        "samples": 22
+      },
+      {
+        "isLeaf": true,
+        "prediction": 4500,
+        "samples": 22
+      }
+    ],
+    "mid": [
+      {
+        "isLeaf": false,
+        "feature": "isSedan",
+        "threshold": 0,
+        "left": {
+          "isLeaf": true,
+          "prediction": 4680,
+          "samples": 7
+        },
+        "right": {
+          "isLeaf": false,
+          "feature": "makeToyota",
+          "threshold": 0,
+          "left": {
+            "isLeaf": true,
+            "prediction": 5000,
+            "samples": 5
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 5250,
+            "samples": 24
+          },
+          "samples": 29
+        },
+        "samples": 36
+      },
+      {
+        "isLeaf": false,
+        "feature": "isSUV",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "makeToyota",
+          "threshold": 0,
+          "left": {
+            "isLeaf": true,
+            "prediction": 5000,
+            "samples": 3
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 5250,
+            "samples": 24
+          },
+          "samples": 27
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 4680,
+          "samples": 9
+        },
+        "samples": 36
+      },
+      {
+        "isLeaf": false,
+        "feature": "modelWish",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "yearMileageRatio",
+          "threshold": 11.289233884576444,
+          "left": {
+            "isLeaf": true,
+            "prediction": 5250,
+            "samples": 24
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 5000,
+            "samples": 3
+          },
+          "samples": 27
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 4680,
+          "samples": 9
+        },
+        "samples": 36
+      },
+      {
+        "isLeaf": false,
+        "feature": "isSUV",
+        "threshold": 0,
+        "left": {
+          "isLeaf": true,
+          "prediction": 5241.071428571428,
+          "samples": 28
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 4680,
+          "samples": 8
+        },
+        "samples": 36
+      },
+      {
+        "isLeaf": false,
+        "feature": "isSedan",
+        "threshold": 0,
+        "left": {
+          "isLeaf": true,
+          "prediction": 4680,
+          "samples": 13
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 5228.260869565217,
+          "samples": 23
+        },
+        "samples": 36
+      },
+      {
+        "isLeaf": false,
+        "feature": "modelWish",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "age",
+          "threshold": 19,
+          "left": {
+            "isLeaf": true,
+            "prediction": 5250,
+            "samples": 22
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 5000,
+            "samples": 4
+          },
+          "samples": 26
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 4680,
+          "samples": 10
+        },
+        "samples": 36
+      },
+      {
+        "isLeaf": false,
+        "feature": "isSedan",
+        "threshold": 0,
+        "left": {
+          "isLeaf": true,
+          "prediction": 4680,
+          "samples": 9
+        },
+        "right": {
+          "isLeaf": false,
+          "feature": "isHybrid",
+          "threshold": 0,
+          "left": {
+            "isLeaf": true,
+            "prediction": 5000,
+            "samples": 4
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 5250,
+            "samples": 23
+          },
+          "samples": 27
+        },
+        "samples": 36
+      },
+      {
+        "isLeaf": false,
+        "feature": "modelWish",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "age",
+          "threshold": 19,
+          "left": {
+            "isLeaf": true,
+            "prediction": 5250,
+            "samples": 17
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 5000,
+            "samples": 7
+          },
+          "samples": 24
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 4680,
+          "samples": 12
+        },
+        "samples": 36
+      },
+      {
+        "isLeaf": false,
+        "feature": "isSedan",
+        "threshold": 0,
+        "left": {
+          "isLeaf": true,
+          "prediction": 4680,
+          "samples": 10
+        },
+        "right": {
+          "isLeaf": false,
+          "feature": "logMileage",
+          "threshold": 11.84939770159144,
+          "left": {
+            "isLeaf": true,
+            "prediction": 5000,
+            "samples": 5
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 5250,
+            "samples": 21
+          },
+          "samples": 26
+        },
+        "samples": 36
+      },
+      {
+        "isLeaf": false,
+        "feature": "isSedan",
+        "threshold": 0,
+        "left": {
+          "isLeaf": true,
+          "prediction": 4680,
+          "samples": 14
+        },
+        "right": {
+          "isLeaf": false,
+          "feature": "year",
+          "threshold": 2006,
+          "left": {
+            "isLeaf": true,
+            "prediction": 5000,
+            "samples": 5
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 5250,
+            "samples": 17
+          },
+          "samples": 22
+        },
+        "samples": 36
+      },
+      {
+        "isLeaf": false,
+        "feature": "modelWish",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "isHybrid",
+          "threshold": 0,
+          "left": {
+            "isLeaf": true,
+            "prediction": 5000,
+            "samples": 4
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 5250,
+            "samples": 23
+          },
+          "samples": 27
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 4680,
+          "samples": 9
+        },
+        "samples": 36
+      },
+      {
+        "isLeaf": false,
+        "feature": "isSedan",
+        "threshold": 0,
+        "left": {
+          "isLeaf": true,
+          "prediction": 4680,
+          "samples": 13
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 5228.260869565217,
+          "samples": 23
+        },
+        "samples": 36
+      },
+      {
+        "isLeaf": false,
+        "feature": "isSedan",
+        "threshold": 0,
+        "left": {
+          "isLeaf": true,
+          "prediction": 4680,
+          "samples": 16
+        },
+        "right": {
+          "isLeaf": false,
+          "feature": "yearMileageRatio",
+          "threshold": 11.289233884576444,
+          "left": {
+            "isLeaf": true,
+            "prediction": 5250,
+            "samples": 16
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 5000,
+            "samples": 4
+          },
+          "samples": 20
+        },
+        "samples": 36
+      },
+      {
+        "isLeaf": false,
+        "feature": "modelWish",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "year",
+          "threshold": 2006,
+          "left": {
+            "isLeaf": true,
+            "prediction": 5000,
+            "samples": 3
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 5250,
+            "samples": 23
+          },
+          "samples": 26
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 4680,
+          "samples": 10
+        },
+        "samples": 36
+      },
+      {
+        "isLeaf": false,
+        "feature": "isSUV",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "logAge",
+          "threshold": 2.9444389791664403,
+          "left": {
+            "isLeaf": true,
+            "prediction": 5250,
+            "samples": 21
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 5000,
+            "samples": 5
+          },
+          "samples": 26
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 4680,
+          "samples": 10
+        },
+        "samples": 36
+      },
+      {
+        "isLeaf": false,
+        "feature": "isSUV",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "modelCorolla",
+          "threshold": 0,
+          "left": {
+            "isLeaf": true,
+            "prediction": 5000,
+            "samples": 4
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 5250,
+            "samples": 18
+          },
+          "samples": 22
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 4680,
+          "samples": 14
+        },
+        "samples": 36
+      },
+      {
+        "isLeaf": false,
+        "feature": "isSUV",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "year",
+          "threshold": 2006,
+          "left": {
+            "isLeaf": true,
+            "prediction": 5000,
+            "samples": 5
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 5250,
+            "samples": 21
+          },
+          "samples": 26
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 4680,
+          "samples": 10
+        },
+        "samples": 36
+      },
+      {
+        "isLeaf": false,
+        "feature": "modelWish",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "year",
+          "threshold": 2006,
+          "left": {
+            "isLeaf": true,
+            "prediction": 5000,
+            "samples": 3
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 5250,
+            "samples": 27
+          },
+          "samples": 30
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 4680,
+          "samples": 6
+        },
+        "samples": 36
+      },
+      {
+        "isLeaf": false,
+        "feature": "isSedan",
+        "threshold": 0,
+        "left": {
+          "isLeaf": true,
+          "prediction": 4680,
+          "samples": 14
+        },
+        "right": {
+          "isLeaf": false,
+          "feature": "isHybrid",
+          "threshold": 0,
+          "left": {
+            "isLeaf": true,
+            "prediction": 5000,
+            "samples": 3
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 5250,
+            "samples": 19
+          },
+          "samples": 22
+        },
+        "samples": 36
+      },
+      {
+        "isLeaf": false,
+        "feature": "isSedan",
+        "threshold": 0,
+        "left": {
+          "isLeaf": true,
+          "prediction": 4680,
+          "samples": 12
+        },
+        "right": {
+          "isLeaf": false,
+          "feature": "modelCivic",
+          "threshold": 0,
+          "left": {
+            "isLeaf": true,
+            "prediction": 5250,
+            "samples": 21
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 5000,
+            "samples": 3
+          },
+          "samples": 24
+        },
+        "samples": 36
+      },
+      {
+        "isLeaf": false,
+        "feature": "modelWish",
+        "threshold": 0,
+        "left": {
+          "isLeaf": true,
+          "prediction": 5240,
+          "samples": 25
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 4680,
+          "samples": 11
+        },
+        "samples": 36
+      },
+      {
+        "isLeaf": false,
+        "feature": "isSUV",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "isHybrid",
+          "threshold": 0,
+          "left": {
+            "isLeaf": true,
+            "prediction": 5000,
+            "samples": 5
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 5250,
+            "samples": 24
+          },
+          "samples": 29
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 4680,
+          "samples": 7
+        },
+        "samples": 36
+      },
+      {
+        "isLeaf": false,
+        "feature": "isSUV",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "yearSquared",
+          "threshold": 4024036,
+          "left": {
+            "isLeaf": true,
+            "prediction": 5000,
+            "samples": 3
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 5250,
+            "samples": 22
+          },
+          "samples": 25
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 4680,
+          "samples": 11
+        },
+        "samples": 36
+      },
+      {
+        "isLeaf": false,
+        "feature": "isSUV",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "mileage",
+          "threshold": 140000,
+          "left": {
+            "isLeaf": true,
+            "prediction": 5000,
+            "samples": 4
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 5250,
+            "samples": 23
+          },
+          "samples": 27
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 4680,
+          "samples": 9
+        },
+        "samples": 36
+      },
+      {
+        "isLeaf": false,
+        "feature": "isSUV",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "age",
+          "threshold": 19,
+          "left": {
+            "isLeaf": true,
+            "prediction": 5250,
+            "samples": 17
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 5000,
+            "samples": 6
+          },
+          "samples": 23
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 4680,
+          "samples": 13
+        },
+        "samples": 36
+      },
+      {
+        "isLeaf": false,
+        "feature": "modelWish",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "isHybrid",
+          "threshold": 0,
+          "left": {
+            "isLeaf": true,
+            "prediction": 5000,
+            "samples": 5
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 5250,
+            "samples": 18
+          },
+          "samples": 23
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 4680,
+          "samples": 13
+        },
+        "samples": 36
+      },
+      {
+        "isLeaf": false,
+        "feature": "isSUV",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "makeHonda",
+          "threshold": 0,
+          "left": {
+            "isLeaf": true,
+            "prediction": 5250,
+            "samples": 21
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 5000,
+            "samples": 5
+          },
+          "samples": 26
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 4680,
+          "samples": 10
+        },
+        "samples": 36
+      },
+      {
+        "isLeaf": false,
+        "feature": "isSedan",
+        "threshold": 0,
+        "left": {
+          "isLeaf": true,
+          "prediction": 4680,
+          "samples": 12
+        },
+        "right": {
+          "isLeaf": false,
+          "feature": "modelCivic",
+          "threshold": 0,
+          "left": {
+            "isLeaf": true,
+            "prediction": 5250,
+            "samples": 18
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 5000,
+            "samples": 6
+          },
+          "samples": 24
+        },
+        "samples": 36
+      },
+      {
+        "isLeaf": false,
+        "feature": "isSUV",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "isHybrid",
+          "threshold": 0,
+          "left": {
+            "isLeaf": true,
+            "prediction": 5000,
+            "samples": 4
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 5250,
+            "samples": 23
+          },
+          "samples": 27
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 4680,
+          "samples": 9
+        },
+        "samples": 36
+      },
+      {
+        "isLeaf": false,
+        "feature": "isSedan",
+        "threshold": 0,
+        "left": {
+          "isLeaf": true,
+          "prediction": 4680,
+          "samples": 7
+        },
+        "right": {
+          "isLeaf": false,
+          "feature": "isHybrid",
+          "threshold": 0,
+          "left": {
+            "isLeaf": true,
+            "prediction": 5000,
+            "samples": 3
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 5250,
+            "samples": 26
+          },
+          "samples": 29
+        },
+        "samples": 36
+      }
+    ],
+    "high": [
+      {
+        "isLeaf": false,
+        "feature": "mileage",
+        "threshold": 71488,
+        "left": {
+          "isLeaf": true,
+          "prediction": 6495,
+          "samples": 26
+        },
+        "right": {
+          "isLeaf": false,
+          "feature": "modelAqua",
+          "threshold": 0,
+          "left": {
+            "isLeaf": false,
+            "feature": "makeToyota",
+            "threshold": 0,
+            "left": {
+              "isLeaf": false,
+              "feature": "mileagePerYear",
+              "threshold": 8732.615384615385,
+              "left": {
+                "isLeaf": true,
+                "prediction": 6989,
+                "samples": 24
+              },
+              "right": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 22
+              },
+              "samples": 46
+            },
+            "right": {
+              "isLeaf": true,
+              "prediction": 6872.5,
+              "samples": 16
+            },
+            "samples": 62
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 7479,
+            "samples": 18
+          },
+          "samples": 80
+        },
+        "samples": 106
+      },
+      {
+        "isLeaf": false,
+        "feature": "isHatchback",
+        "threshold": 0,
+        "left": {
+          "isLeaf": true,
+          "prediction": 6457.916666666667,
+          "samples": 24
+        },
+        "right": {
+          "isLeaf": false,
+          "feature": "logMileage",
+          "threshold": 11.539129130466865,
+          "left": {
+            "isLeaf": true,
+            "prediction": 7479,
+            "samples": 21
+          },
+          "right": {
+            "isLeaf": false,
+            "feature": "logMileage",
+            "threshold": 11.639769547294895,
+            "left": {
+              "isLeaf": true,
+              "prediction": 6989,
+              "samples": 27
+            },
+            "right": {
+              "isLeaf": false,
+              "feature": "mileage",
+              "threshold": 149050,
+              "left": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 14
+              },
+              "right": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 20
+              },
+              "samples": 34
+            },
+            "samples": 61
+          },
+          "samples": 82
+        },
+        "samples": 106
+      },
+      {
+        "isLeaf": false,
+        "feature": "isHatchback",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "yearSquared",
+          "threshold": 4024036,
+          "left": {
+            "isLeaf": true,
+            "prediction": 6495,
+            "samples": 15
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 6050,
+            "samples": 4
+          },
+          "samples": 19
+        },
+        "right": {
+          "isLeaf": false,
+          "feature": "modelAqua",
+          "threshold": 0,
+          "left": {
+            "isLeaf": false,
+            "feature": "yearMileageRatio",
+            "threshold": 13.458570949345855,
+            "left": {
+              "isLeaf": false,
+              "feature": "mileageSquared",
+              "threshold": 22215902500,
+              "left": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 20
+              },
+              "right": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 27
+              },
+              "samples": 47
+            },
+            "right": {
+              "isLeaf": true,
+              "prediction": 6989,
+              "samples": 24
+            },
+            "samples": 71
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 7479,
+            "samples": 16
+          },
+          "samples": 87
+        },
+        "samples": 106
+      },
+      {
+        "isLeaf": false,
+        "feature": "isHatchback",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "ageSquared",
+          "threshold": 121,
+          "left": {
+            "isLeaf": true,
+            "prediction": 6050,
+            "samples": 5
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 6495,
+            "samples": 22
+          },
+          "samples": 27
+        },
+        "right": {
+          "isLeaf": false,
+          "feature": "ageMileageRatio",
+          "threshold": 1.3418316001341832,
+          "left": {
+            "isLeaf": false,
+            "feature": "year",
+            "threshold": 2012,
+            "left": {
+              "isLeaf": false,
+              "feature": "makeMazda",
+              "threshold": 0,
+              "left": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 18
+              },
+              "right": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 24
+              },
+              "samples": 42
+            },
+            "right": {
+              "isLeaf": true,
+              "prediction": 6989,
+              "samples": 20
+            },
+            "samples": 62
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 7479,
+            "samples": 17
+          },
+          "samples": 79
+        },
+        "samples": 106
+      },
+      {
+        "isLeaf": false,
+        "feature": "ageMileageRatio",
+        "threshold": 1.3637913399249915,
+        "left": {
+          "isLeaf": false,
+          "feature": "yearMileageRatio",
+          "threshold": 17.73193333568232,
+          "left": {
+            "isLeaf": false,
+            "feature": "mileagePerYear",
+            "threshold": 8732.615384615385,
+            "left": {
+              "isLeaf": false,
+              "feature": "yearMileageRatio",
+              "threshold": 13.458570949345855,
+              "left": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 11
+              },
+              "right": {
+                "isLeaf": true,
+                "prediction": 6989,
+                "samples": 26
+              },
+              "samples": 37
+            },
+            "right": {
+              "isLeaf": true,
+              "prediction": 6908.260869565217,
+              "samples": 23
+            },
+            "samples": 60
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 7479,
+            "samples": 18
+          },
+          "samples": 78
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 6495,
+          "samples": 28
+        },
+        "samples": 106
+      },
+      {
+        "isLeaf": false,
+        "feature": "modelAqua",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "isHatchback",
+          "threshold": 0,
+          "left": {
+            "isLeaf": false,
+            "feature": "ageSquared",
+            "threshold": 121,
+            "left": {
+              "isLeaf": true,
+              "prediction": 6050,
+              "samples": 4
+            },
+            "right": {
+              "isLeaf": true,
+              "prediction": 6495,
+              "samples": 16
+            },
+            "samples": 20
+          },
+          "right": {
+            "isLeaf": false,
+            "feature": "age",
+            "threshold": 13,
+            "left": {
+              "isLeaf": true,
+              "prediction": 6989,
+              "samples": 26
+            },
+            "right": {
+              "isLeaf": false,
+              "feature": "ageSquared",
+              "threshold": 196,
+              "left": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 21
+              },
+              "right": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 15
+              },
+              "samples": 36
+            },
+            "samples": 62
+          },
+          "samples": 82
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 7479,
+          "samples": 24
+        },
+        "samples": 106
+      },
+      {
+        "isLeaf": false,
+        "feature": "modelAqua",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "isHatchback",
+          "threshold": 0,
+          "left": {
+            "isLeaf": true,
+            "prediction": 6465.333333333333,
+            "samples": 15
+          },
+          "right": {
+            "isLeaf": false,
+            "feature": "mileageSquared",
+            "threshold": 12887698576,
+            "left": {
+              "isLeaf": true,
+              "prediction": 6989,
+              "samples": 26
+            },
+            "right": {
+              "isLeaf": false,
+              "feature": "year",
+              "threshold": 2006,
+              "left": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 14
+              },
+              "right": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 18
+              },
+              "samples": 32
+            },
+            "samples": 58
+          },
+          "samples": 73
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 7479,
+          "samples": 33
+        },
+        "samples": 106
+      },
+      {
+        "isLeaf": false,
+        "feature": "isHatchback",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "yearSquared",
+          "threshold": 4024036,
+          "left": {
+            "isLeaf": true,
+            "prediction": 6495,
+            "samples": 27
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 6050,
+            "samples": 4
+          },
+          "samples": 31
+        },
+        "right": {
+          "isLeaf": false,
+          "feature": "mileagePerYear",
+          "threshold": 7332.5,
+          "left": {
+            "isLeaf": true,
+            "prediction": 7479,
+            "samples": 18
+          },
+          "right": {
+            "isLeaf": false,
+            "feature": "modelFit",
+            "threshold": 0,
+            "left": {
+              "isLeaf": false,
+              "feature": "mileageSquared",
+              "threshold": 22215902500,
+              "left": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 15
+              },
+              "right": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 19
+              },
+              "samples": 34
+            },
+            "right": {
+              "isLeaf": true,
+              "prediction": 6989,
+              "samples": 23
+            },
+            "samples": 57
+          },
+          "samples": 75
+        },
+        "samples": 106
+      },
+      {
+        "isLeaf": false,
+        "feature": "isHatchback",
+        "threshold": 0,
+        "left": {
+          "isLeaf": true,
+          "prediction": 6456.304347826087,
+          "samples": 23
+        },
+        "right": {
+          "isLeaf": false,
+          "feature": "ageMileageRatio",
+          "threshold": 1.3418316001341832,
+          "left": {
+            "isLeaf": false,
+            "feature": "yearSquared",
+            "threshold": 4048144,
+            "left": {
+              "isLeaf": false,
+              "feature": "ageSquared",
+              "threshold": 196,
+              "left": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 19
+              },
+              "right": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 15
+              },
+              "samples": 34
+            },
+            "right": {
+              "isLeaf": true,
+              "prediction": 6989,
+              "samples": 20
+            },
+            "samples": 54
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 7479,
+            "samples": 29
+          },
+          "samples": 83
+        },
+        "samples": 106
+      },
+      {
+        "isLeaf": false,
+        "feature": "isHatchback",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "logAge",
+          "threshold": 2.3978952727983707,
+          "left": {
+            "isLeaf": true,
+            "prediction": 6050,
+            "samples": 4
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 6495,
+            "samples": 30
+          },
+          "samples": 34
+        },
+        "right": {
+          "isLeaf": false,
+          "feature": "mileagePerYear",
+          "threshold": 7332.5,
+          "left": {
+            "isLeaf": true,
+            "prediction": 7479,
+            "samples": 23
+          },
+          "right": {
+            "isLeaf": false,
+            "feature": "modelFit",
+            "threshold": 0,
+            "left": {
+              "isLeaf": false,
+              "feature": "age",
+              "threshold": 14,
+              "left": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 17
+              },
+              "right": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 14
+              },
+              "samples": 31
+            },
+            "right": {
+              "isLeaf": true,
+              "prediction": 6989,
+              "samples": 18
+            },
+            "samples": 49
+          },
+          "samples": 72
+        },
+        "samples": 106
+      },
+      {
+        "isLeaf": false,
+        "feature": "isHatchback",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "modelRav4",
+          "threshold": 0,
+          "left": {
+            "isLeaf": true,
+            "prediction": 6495,
+            "samples": 19
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 6050,
+            "samples": 4
+          },
+          "samples": 23
+        },
+        "right": {
+          "isLeaf": false,
+          "feature": "mileage",
+          "threshold": 102655,
+          "left": {
+            "isLeaf": true,
+            "prediction": 7479,
+            "samples": 22
+          },
+          "right": {
+            "isLeaf": false,
+            "feature": "logAge",
+            "threshold": 2.5649493574615367,
+            "left": {
+              "isLeaf": true,
+              "prediction": 6989,
+              "samples": 26
+            },
+            "right": {
+              "isLeaf": false,
+              "feature": "makeMazda",
+              "threshold": 0,
+              "left": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 15
+              },
+              "right": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 20
+              },
+              "samples": 35
+            },
+            "samples": 61
+          },
+          "samples": 83
+        },
+        "samples": 106
+      },
+      {
+        "isLeaf": false,
+        "feature": "modelAqua",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "isHatchback",
+          "threshold": 0,
+          "left": {
+            "isLeaf": true,
+            "prediction": 6435.666666666667,
+            "samples": 15
+          },
+          "right": {
+            "isLeaf": false,
+            "feature": "isPopular",
+            "threshold": 0,
+            "left": {
+              "isLeaf": false,
+              "feature": "ageMileageRatio",
+              "threshold": 0.9345295311331838,
+              "left": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 22
+              },
+              "right": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 21
+              },
+              "samples": 43
+            },
+            "right": {
+              "isLeaf": true,
+              "prediction": 6989,
+              "samples": 17
+            },
+            "samples": 60
+          },
+          "samples": 75
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 7479,
+          "samples": 31
+        },
+        "samples": 106
+      },
+      {
+        "isLeaf": false,
+        "feature": "isHatchback",
+        "threshold": 0,
+        "left": {
+          "isLeaf": true,
+          "prediction": 6435.666666666667,
+          "samples": 15
+        },
+        "right": {
+          "isLeaf": false,
+          "feature": "mileageSquared",
+          "threshold": 10538049025,
+          "left": {
+            "isLeaf": true,
+            "prediction": 7479,
+            "samples": 19
+          },
+          "right": {
+            "isLeaf": false,
+            "feature": "mileageSquared",
+            "threshold": 12887698576,
+            "left": {
+              "isLeaf": true,
+              "prediction": 6989,
+              "samples": 32
+            },
+            "right": {
+              "isLeaf": false,
+              "feature": "year",
+              "threshold": 2006,
+              "left": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 13
+              },
+              "right": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 27
+              },
+              "samples": 40
+            },
+            "samples": 72
+          },
+          "samples": 91
+        },
+        "samples": 106
+      },
+      {
+        "isLeaf": false,
+        "feature": "isHatchback",
+        "threshold": 0,
+        "left": {
+          "isLeaf": true,
+          "prediction": 6452.619047619048,
+          "samples": 21
+        },
+        "right": {
+          "isLeaf": false,
+          "feature": "ageMileageRatio",
+          "threshold": 1.3418316001341832,
+          "left": {
+            "isLeaf": false,
+            "feature": "makeHonda",
+            "threshold": 0,
+            "left": {
+              "isLeaf": false,
+              "feature": "logAge",
+              "threshold": 2.6390573296152584,
+              "left": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 27
+              },
+              "right": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 15
+              },
+              "samples": 42
+            },
+            "right": {
+              "isLeaf": true,
+              "prediction": 6989,
+              "samples": 23
+            },
+            "samples": 65
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 7479,
+            "samples": 20
+          },
+          "samples": 85
+        },
+        "samples": 106
+      },
+      {
+        "isLeaf": false,
+        "feature": "isHatchback",
+        "threshold": 0,
+        "left": {
+          "isLeaf": true,
+          "prediction": 6464.310344827586,
+          "samples": 29
+        },
+        "right": {
+          "isLeaf": false,
+          "feature": "mileageSquared",
+          "threshold": 10538049025,
+          "left": {
+            "isLeaf": true,
+            "prediction": 7479,
+            "samples": 16
+          },
+          "right": {
+            "isLeaf": false,
+            "feature": "mileageSquared",
+            "threshold": 12887698576,
+            "left": {
+              "isLeaf": true,
+              "prediction": 6989,
+              "samples": 19
+            },
+            "right": {
+              "isLeaf": false,
+              "feature": "mileagePerYear",
+              "threshold": 7452.5,
+              "left": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 19
+              },
+              "right": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 23
+              },
+              "samples": 42
+            },
+            "samples": 61
+          },
+          "samples": 77
+        },
+        "samples": 106
+      },
+      {
+        "isLeaf": false,
+        "feature": "isSedan",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "yearMileageRatio",
+          "threshold": 17.73193333568232,
+          "left": {
+            "isLeaf": false,
+            "feature": "year",
+            "threshold": 2013,
+            "left": {
+              "isLeaf": false,
+              "feature": "isPopular",
+              "threshold": 0,
+              "left": {
+                "isLeaf": false,
+                "feature": "mileageSquared",
+                "threshold": 22215902500,
+                "left": {
+                  "isLeaf": true,
+                  "prediction": 6990,
+                  "samples": 11
+                },
+                "right": {
+                  "isLeaf": true,
+                  "prediction": 6990,
+                  "samples": 19
+                },
+                "samples": 30
+              },
+              "right": {
+                "isLeaf": true,
+                "prediction": 6989,
+                "samples": 30
+              },
+              "samples": 60
+            },
+            "right": {
+              "isLeaf": true,
+              "prediction": 6050,
+              "samples": 3
+            },
+            "samples": 63
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 7479,
+            "samples": 19
+          },
+          "samples": 82
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 6495,
+          "samples": 24
+        },
+        "samples": 106
+      },
+      {
+        "isLeaf": false,
+        "feature": "modelAqua",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "mileagePerYear",
+          "threshold": 3574.4,
+          "left": {
+            "isLeaf": true,
+            "prediction": 6495,
+            "samples": 18
+          },
+          "right": {
+            "isLeaf": false,
+            "feature": "makeToyota",
+            "threshold": 0,
+            "left": {
+              "isLeaf": false,
+              "feature": "ageMileageRatio",
+              "threshold": 0.9345295311331838,
+              "left": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 30
+              },
+              "right": {
+                "isLeaf": true,
+                "prediction": 6989,
+                "samples": 18
+              },
+              "samples": 48
+            },
+            "right": {
+              "isLeaf": true,
+              "prediction": 6927.333333333333,
+              "samples": 15
+            },
+            "samples": 63
+          },
+          "samples": 81
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 7479,
+          "samples": 25
+        },
+        "samples": 106
+      },
+      {
+        "isLeaf": false,
+        "feature": "isHatchback",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "logAge",
+          "threshold": 2.3978952727983707,
+          "left": {
+            "isLeaf": true,
+            "prediction": 6050,
+            "samples": 4
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 6495,
+            "samples": 27
+          },
+          "samples": 31
+        },
+        "right": {
+          "isLeaf": false,
+          "feature": "mileageSquared",
+          "threshold": 10538049025,
+          "left": {
+            "isLeaf": true,
+            "prediction": 7479,
+            "samples": 20
+          },
+          "right": {
+            "isLeaf": false,
+            "feature": "logMileage",
+            "threshold": 11.639769547294895,
+            "left": {
+              "isLeaf": true,
+              "prediction": 6989,
+              "samples": 17
+            },
+            "right": {
+              "isLeaf": false,
+              "feature": "modelVitz",
+              "threshold": 0,
+              "left": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 21
+              },
+              "right": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 17
+              },
+              "samples": 38
+            },
+            "samples": 55
+          },
+          "samples": 75
+        },
+        "samples": 106
+      },
+      {
+        "isLeaf": false,
+        "feature": "isHatchback",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "modelRav4",
+          "threshold": 0,
+          "left": {
+            "isLeaf": true,
+            "prediction": 6495,
+            "samples": 23
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 6050,
+            "samples": 4
+          },
+          "samples": 27
+        },
+        "right": {
+          "isLeaf": false,
+          "feature": "mileagePerYear",
+          "threshold": 7332.5,
+          "left": {
+            "isLeaf": true,
+            "prediction": 7479,
+            "samples": 19
+          },
+          "right": {
+            "isLeaf": false,
+            "feature": "yearSquared",
+            "threshold": 4048144,
+            "left": {
+              "isLeaf": false,
+              "feature": "mileage",
+              "threshold": 149050,
+              "left": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 11
+              },
+              "right": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 24
+              },
+              "samples": 35
+            },
+            "right": {
+              "isLeaf": true,
+              "prediction": 6989,
+              "samples": 25
+            },
+            "samples": 60
+          },
+          "samples": 79
+        },
+        "samples": 106
+      },
+      {
+        "isLeaf": false,
+        "feature": "yearMileageRatio",
+        "threshold": 19.599629828064877,
+        "left": {
+          "isLeaf": false,
+          "feature": "logMileage",
+          "threshold": 11.539129130466865,
+          "left": {
+            "isLeaf": true,
+            "prediction": 7479,
+            "samples": 22
+          },
+          "right": {
+            "isLeaf": false,
+            "feature": "makeToyota",
+            "threshold": 0,
+            "left": {
+              "isLeaf": false,
+              "feature": "modelFit",
+              "threshold": 0,
+              "left": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 18
+              },
+              "right": {
+                "isLeaf": true,
+                "prediction": 6989,
+                "samples": 27
+              },
+              "samples": 45
+            },
+            "right": {
+              "isLeaf": true,
+              "prediction": 6911.666666666667,
+              "samples": 12
+            },
+            "samples": 57
+          },
+          "samples": 79
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 6495,
+          "samples": 27
+        },
+        "samples": 106
+      },
+      {
+        "isLeaf": false,
+        "feature": "modelAqua",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "isHatchback",
+          "threshold": 0,
+          "left": {
+            "isLeaf": true,
+            "prediction": 6459.4,
+            "samples": 25
+          },
+          "right": {
+            "isLeaf": false,
+            "feature": "year",
+            "threshold": 2012,
+            "left": {
+              "isLeaf": false,
+              "feature": "modelDemio",
+              "threshold": 0,
+              "left": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 16
+              },
+              "right": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 20
+              },
+              "samples": 36
+            },
+            "right": {
+              "isLeaf": true,
+              "prediction": 6989,
+              "samples": 21
+            },
+            "samples": 57
+          },
+          "samples": 82
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 7479,
+          "samples": 24
+        },
+        "samples": 106
+      },
+      {
+        "isLeaf": false,
+        "feature": "modelAqua",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "isHatchback",
+          "threshold": 0,
+          "left": {
+            "isLeaf": false,
+            "feature": "makeNissan",
+            "threshold": 0,
+            "left": {
+              "isLeaf": true,
+              "prediction": 6050,
+              "samples": 5
+            },
+            "right": {
+              "isLeaf": true,
+              "prediction": 6495,
+              "samples": 22
+            },
+            "samples": 27
+          },
+          "right": {
+            "isLeaf": false,
+            "feature": "makeHonda",
+            "threshold": 0,
+            "left": {
+              "isLeaf": false,
+              "feature": "makeMazda",
+              "threshold": 0,
+              "left": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 10
+              },
+              "right": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 28
+              },
+              "samples": 38
+            },
+            "right": {
+              "isLeaf": true,
+              "prediction": 6989,
+              "samples": 20
+            },
+            "samples": 58
+          },
+          "samples": 85
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 7479,
+          "samples": 21
+        },
+        "samples": 106
+      },
+      {
+        "isLeaf": false,
+        "feature": "isHatchback",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "modelTiida",
+          "threshold": 0,
+          "left": {
+            "isLeaf": true,
+            "prediction": 6050,
+            "samples": 3
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 6495,
+            "samples": 18
+          },
+          "samples": 21
+        },
+        "right": {
+          "isLeaf": false,
+          "feature": "mileagePerYear",
+          "threshold": 7332.5,
+          "left": {
+            "isLeaf": true,
+            "prediction": 7479,
+            "samples": 20
+          },
+          "right": {
+            "isLeaf": false,
+            "feature": "age",
+            "threshold": 13,
+            "left": {
+              "isLeaf": true,
+              "prediction": 6989,
+              "samples": 22
+            },
+            "right": {
+              "isLeaf": false,
+              "feature": "logAge",
+              "threshold": 2.6390573296152584,
+              "left": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 25
+              },
+              "right": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 18
+              },
+              "samples": 43
+            },
+            "samples": 65
+          },
+          "samples": 85
+        },
+        "samples": 106
+      },
+      {
+        "isLeaf": false,
+        "feature": "isHatchback",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "ageMileageRatio",
+          "threshold": 0.7445008460236886,
+          "left": {
+            "isLeaf": true,
+            "prediction": 6050,
+            "samples": 3
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 6495,
+            "samples": 29
+          },
+          "samples": 32
+        },
+        "right": {
+          "isLeaf": false,
+          "feature": "logMileage",
+          "threshold": 11.539129130466865,
+          "left": {
+            "isLeaf": true,
+            "prediction": 7479,
+            "samples": 20
+          },
+          "right": {
+            "isLeaf": false,
+            "feature": "ageSquared",
+            "threshold": 169,
+            "left": {
+              "isLeaf": true,
+              "prediction": 6989,
+              "samples": 19
+            },
+            "right": {
+              "isLeaf": false,
+              "feature": "logAge",
+              "threshold": 2.6390573296152584,
+              "left": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 18
+              },
+              "right": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 17
+              },
+              "samples": 35
+            },
+            "samples": 54
+          },
+          "samples": 74
+        },
+        "samples": 106
+      },
+      {
+        "isLeaf": false,
+        "feature": "modelAqua",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "yearMileageRatio",
+          "threshold": 17.73193333568232,
+          "left": {
+            "isLeaf": false,
+            "feature": "yearMileageRatio",
+            "threshold": 13.458570949345855,
+            "left": {
+              "isLeaf": false,
+              "feature": "yearSquared",
+              "threshold": 4024036,
+              "left": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 16
+              },
+              "right": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 24
+              },
+              "samples": 40
+            },
+            "right": {
+              "isLeaf": true,
+              "prediction": 6944.285714285715,
+              "samples": 21
+            },
+            "samples": 61
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 6495,
+            "samples": 24
+          },
+          "samples": 85
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 7479,
+          "samples": 21
+        },
+        "samples": 106
+      },
+      {
+        "isLeaf": false,
+        "feature": "mileageSquared",
+        "threshold": 5110534144,
+        "left": {
+          "isLeaf": true,
+          "prediction": 6495,
+          "samples": 25
+        },
+        "right": {
+          "isLeaf": false,
+          "feature": "modelAqua",
+          "threshold": 0,
+          "left": {
+            "isLeaf": false,
+            "feature": "mileageSquared",
+            "threshold": 12887698576,
+            "left": {
+              "isLeaf": true,
+              "prediction": 6989,
+              "samples": 27
+            },
+            "right": {
+              "isLeaf": false,
+              "feature": "makeToyota",
+              "threshold": 0,
+              "left": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 16
+              },
+              "right": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 19
+              },
+              "samples": 35
+            },
+            "samples": 62
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 7479,
+            "samples": 19
+          },
+          "samples": 81
+        },
+        "samples": 106
+      },
+      {
+        "isLeaf": false,
+        "feature": "isHatchback",
+        "threshold": 0,
+        "left": {
+          "isLeaf": true,
+          "prediction": 6452.619047619048,
+          "samples": 21
+        },
+        "right": {
+          "isLeaf": false,
+          "feature": "mileage",
+          "threshold": 102655,
+          "left": {
+            "isLeaf": true,
+            "prediction": 7479,
+            "samples": 19
+          },
+          "right": {
+            "isLeaf": false,
+            "feature": "makeHonda",
+            "threshold": 0,
+            "left": {
+              "isLeaf": false,
+              "feature": "makeMazda",
+              "threshold": 0,
+              "left": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 15
+              },
+              "right": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 28
+              },
+              "samples": 43
+            },
+            "right": {
+              "isLeaf": true,
+              "prediction": 6989,
+              "samples": 23
+            },
+            "samples": 66
+          },
+          "samples": 85
+        },
+        "samples": 106
+      },
+      {
+        "isLeaf": false,
+        "feature": "isHatchback",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "modelRav4",
+          "threshold": 0,
+          "left": {
+            "isLeaf": true,
+            "prediction": 6495,
+            "samples": 17
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 6050,
+            "samples": 4
+          },
+          "samples": 21
+        },
+        "right": {
+          "isLeaf": false,
+          "feature": "modelAqua",
+          "threshold": 0,
+          "left": {
+            "isLeaf": false,
+            "feature": "isPopular",
+            "threshold": 0,
+            "left": {
+              "isLeaf": false,
+              "feature": "makeToyota",
+              "threshold": 0,
+              "left": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 23
+              },
+              "right": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 12
+              },
+              "samples": 35
+            },
+            "right": {
+              "isLeaf": true,
+              "prediction": 6989,
+              "samples": 21
+            },
+            "samples": 56
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 7479,
+            "samples": 29
+          },
+          "samples": 85
+        },
+        "samples": 106
+      },
+      {
+        "isLeaf": false,
+        "feature": "makeNissan",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "modelAqua",
+          "threshold": 0,
+          "left": {
+            "isLeaf": false,
+            "feature": "makeToyota",
+            "threshold": 0,
+            "left": {
+              "isLeaf": false,
+              "feature": "ageSquared",
+              "threshold": 169,
+              "left": {
+                "isLeaf": true,
+                "prediction": 6989,
+                "samples": 23
+              },
+              "right": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 21
+              },
+              "samples": 44
+            },
+            "right": {
+              "isLeaf": true,
+              "prediction": 6879.411764705882,
+              "samples": 17
+            },
+            "samples": 61
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 7479,
+            "samples": 18
+          },
+          "samples": 79
+        },
+        "right": {
+          "isLeaf": true,
+          "prediction": 6495,
+          "samples": 27
+        },
+        "samples": 106
+      },
+      {
+        "isLeaf": false,
+        "feature": "isHatchback",
+        "threshold": 0,
+        "left": {
+          "isLeaf": false,
+          "feature": "yearMileageRatio",
+          "threshold": 13.637901861252114,
+          "left": {
+            "isLeaf": true,
+            "prediction": 6050,
+            "samples": 5
+          },
+          "right": {
+            "isLeaf": true,
+            "prediction": 6495,
+            "samples": 20
+          },
+          "samples": 25
+        },
+        "right": {
+          "isLeaf": false,
+          "feature": "mileageSquared",
+          "threshold": 10538049025,
+          "left": {
+            "isLeaf": true,
+            "prediction": 7479,
+            "samples": 23
+          },
+          "right": {
+            "isLeaf": false,
+            "feature": "isPopular",
+            "threshold": 0,
+            "left": {
+              "isLeaf": false,
+              "feature": "mileageSquared",
+              "threshold": 22215902500,
+              "left": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 14
+              },
+              "right": {
+                "isLeaf": true,
+                "prediction": 6990,
+                "samples": 22
+              },
+              "samples": 36
+            },
+            "right": {
+              "isLeaf": true,
+              "prediction": 6989,
+              "samples": 22
+            },
+            "samples": 58
+          },
+          "samples": 81
+        },
+        "samples": 106
+      }
+    ]
+  },
+  "featureStats": {
+    "year": {
+      "mean": 2009.1097560975609,
+      "std": 2.9508415399967025,
+      "min": 2006,
+      "max": 2015
+    },
+    "mileage": {
+      "mean": 129147.35975609756,
+      "std": 31735.45656288442,
+      "min": 71488,
+      "max": 177780
+    },
+    "age": {
+      "mean": 16.890243902439025,
+      "std": 2.9508415399967056,
+      "min": 11,
+      "max": 20
+    },
+    "mileagePerYear": {
+      "mean": 7863.434002584562,
+      "std": 2146.869358284341,
+      "min": 3574.4,
+      "max": 13431.818181818182
+    },
+    "yearSquared": {
+      "mean": 4036530.7195121953,
+      "std": 11859.567446019786,
+      "min": 4024036,
+      "max": 4060225
+    },
+    "mileageSquared": {
+      "mean": 17686179735.22561,
+      "std": 7912030505.451798,
+      "min": 5110534144,
+      "max": 31605728400
+    },
+    "ageSquared": {
+      "mean": 293.9878048780488,
+      "std": 97.35696123061497,
+      "min": 121,
+      "max": 400
+    },
+    "logMileage": {
+      "mean": 11.73403642112469,
+      "std": 0.27374079880233115,
+      "min": 11.177284882428873,
+      "max": 12.088302109795666
+    },
+    "logAge": {
+      "mean": 2.8106132295526716,
+      "std": 0.18199011220895528,
+      "min": 2.3978952727983707,
+      "max": 2.995732273553991
+    },
+    "yearMileageRatio": {
+      "mean": 16.76450054501018,
+      "std": 5.110458460538335,
+      "min": 11.289233884576444,
+      "max": 28.060653536257835
+    },
+    "ageMileageRatio": {
+      "mean": 1.4156945422818177,
+      "std": 0.5680090613461307,
+      "min": 0.7445008460236886,
+      "max": 2.7976723366159355
+    },
+    "makeToyota": {
+      "mean": 0.43902439024390244,
+      "std": 0.4962680475457505,
+      "min": 0,
+      "max": 1
+    },
+    "makeHonda": {
+      "mean": 0.15853658536585366,
+      "std": 0.36524339346029133,
+      "min": 0,
+      "max": 1
+    },
+    "makeMazda": {
+      "mean": 0.13414634146341464,
+      "std": 0.34080947835322284,
+      "min": 0,
+      "max": 1
+    },
+    "makeNissan": {
+      "mean": 0.13414634146341464,
+      "std": 0.34080947835322234,
+      "min": 0,
+      "max": 1
+    },
+    "makeSuzuki": {
+      "mean": 0.13414634146341464,
+      "std": 0.34080947835322256,
+      "min": 0,
+      "max": 1
+    },
+    "modelCorolla": {
+      "mean": 0.12804878048780488,
+      "std": 0.3341441160687848,
+      "min": 0,
+      "max": 1
+    },
+    "modelVitz": {
+      "mean": 0.09146341463414634,
+      "std": 0.2882669915505557,
+      "min": 0,
+      "max": 1
+    },
+    "modelWish": {
+      "mean": 0.06707317073170732,
+      "std": 0.2501486767898284,
+      "min": 0,
+      "max": 1
+    },
+    "modelRav4": {
+      "mean": 0.018292682926829267,
+      "std": 0.1340076888770483,
+      "min": 0,
+      "max": 1
+    },
+    "modelFit": {
+      "mean": 0.13414634146341464,
+      "std": 0.34080947835322295,
+      "min": 0,
+      "max": 1
+    },
+    "modelDemio": {
+      "mean": 0.13414634146341464,
+      "std": 0.34080947835322284,
+      "min": 0,
+      "max": 1
+    },
+    "modelAqua": {
+      "mean": 0.13414634146341464,
+      "std": 0.34080947835322273,
+      "min": 0,
+      "max": 1
+    },
+    "modelSwift": {
+      "mean": 0.13414634146341464,
+      "std": 0.34080947835322256,
+      "min": 0,
+      "max": 1
+    },
+    "modelPrius": {
+      "mean": 0,
+      "std": 0,
+      "min": 0,
+      "max": 0
+    },
+    "modelAxela": {
+      "mean": 0,
+      "std": 0,
+      "min": 0,
+      "max": 0
+    },
+    "modelCivic": {
+      "mean": 0.024390243902439025,
+      "std": 0.15425744683748188,
+      "min": 0,
+      "max": 1
+    },
+    "modelTiida": {
+      "mean": 0.13414634146341464,
+      "std": 0.34080947835322234,
+      "min": 0,
+      "max": 1
+    },
+    "isHatchback": {
+      "mean": 0.6280487804878049,
+      "std": 0.48332546986020375,
+      "min": 0,
+      "max": 1
+    },
+    "isSedan": {
+      "mean": 0.2865853658536585,
+      "std": 0.4521661132063997,
+      "min": 0,
+      "max": 1
+    },
+    "isSUV": {
+      "mean": 0.08536585365853659,
+      "std": 0.2794253472534045,
+      "min": 0,
+      "max": 1
+    },
+    "isHybrid": {
+      "mean": 0.39634146341463417,
+      "std": 0.48913690087027767,
+      "min": 0,
+      "max": 1
+    },
+    "isPopular": {
+      "mean": 0.5304878048780488,
+      "std": 0.4990696281619607,
+      "min": 0,
+      "max": 1
+    },
+    "locationAuckland": {
+      "mean": 0.8658536585365854,
+      "std": 0.34080947835322284,
+      "min": 0,
+      "max": 1
+    },
+    "locationWaikato": {
+      "mean": 0,
+      "std": 0,
+      "min": 0,
+      "max": 0
+    },
+    "isPrivate": {
+      "mean": 0,
+      "std": 0,
+      "min": 0,
+      "max": 0
+    },
+    "priceTier": {
+      "mean": null,
+      "std": null,
+      "min": null,
+      "max": null
+    }
+  },
+  "modelPerformance": {
+    "mae": "10.41",
+    "rmse": "13.12",
+    "accuracy": "89.59",
+    "sampleSize": 50,
+    "meanAbsError": "649"
+  },
+  "isTrained": true,
+  "savedAt": "2026-03-02T14:30:11.527Z"
+}

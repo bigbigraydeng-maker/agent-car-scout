@@ -1,0 +1,28 @@
+/**
+ * 修改说明：目标利润率从 15% 调整为 10%
+ * 
+ * 需要修改的文件：
+ * C:\Users\Zhong\.openclaw\workspace\skills\car-scout\src\scoring-v3.js
+ * 
+ * 修改位置：第 45 行
+ * 
+ * 修改前：
+ *   minProfitMargin: 0.15,
+ * 
+ * 修改后：
+ *   minProfitMargin: 0.10,
+ */
+
+console.log('='.repeat(60));
+console.log('🎯 Car Scout - 目标利润率调整说明');
+console.log('='.repeat(60));
+console.log('\n调整内容：');
+console.log('   最低目标利润率：15% → 10%');
+console.log('\n影响：');
+console.log('   • 更多车辆将通过筛选');
+console.log('   • 净利润率 ≥10% 的车辆都会被考虑');
+console.log('   • 建议出价和评分逻辑保持不变');
+console.log('\n文件位置：');
+console.log('   C:\\Users\\Zhong\\.openclaw\\workspace\\skills\\car-scout\\src\\scoring-v3.js');
+console.log('   第 45 行：minProfitMargin: 0.10,');
+console.log('='.repeat(60));

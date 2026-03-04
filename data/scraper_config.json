@@ -1,0 +1,36 @@
+{
+  "platforms": {
+    "trademe": {
+      "name": "TradeMe",
+      "enabled": true,
+      "url": "https://www.trademe.co.nz/a/motors/cars/search?year_min=2005&price_max=8000&odometer_max=160000&listing_type=private",
+      "selectors": {
+        "cards": "[class*=\"ListingCard\"], [class*=\"tm-search-card\"], .tm-motors-search-card",
+        "link": "a[href*=\"/listing/\"]",
+        "title": "h3, [class*=\"title\"], h2",
+        "price": "[class*=\"price\"], [class*=\"Price\"], .o-price",
+        "details": "[class*=\"details\"], [class*=\"subtitle\"]",
+        "location": "[class*=\"location\"]"
+      },
+      "weight": 1
+    },
+    "facebook": {
+      "name": "Facebook Marketplace",
+      "enabled": true,
+      "url": "https://www.facebook.com/marketplace/auckland/search/?query=toyota%20corolla&minPrice=2500&maxPrice=8000&category_id=807311116002604",
+      "selectors": {
+        "cards": "[class*=\"x9f619\"], [class*=\"x78zum5\"]",
+        "link": "a[href*=\"/marketplace/item/\"]",
+        "title": "[class*=\"x1lliihq\"], [class*=\"x13fuv20\"]",
+        "price": "[class*=\"x193iq5w\"], [class*=\"x6ikm8r\"]",
+        "details": "[class*=\"x1gslohp\"], [class*=\"x1a2a7pz\"]",
+        "location": "[class*=\"x1lliihq\"], [class*=\"x6ikm8r\"]"
+      },
+      "weight": 0.8
+    }
+  },
+  "customSites": [],
+  "maxListingsPerPlatform": 50,
+  "timeout": 30000,
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+}

@@ -1,0 +1,59 @@
+{
+  "vehicles": [
+    {
+      "id": "5786836792",
+      "listingUrl": "https://www.trademe.co.nz/a/motors/cars/nissan/tiida/listing/5786836792",
+      "model": "Tiida",
+      "year": 2005,
+      "price": 3100,
+      "reason": "链接跳转到列表页",
+      "addedAt": "2026-03-03T10:15:00.000Z"
+    },
+    {
+      "id": "5791406127",
+      "listingUrl": "https://www.trademe.co.nz/a/motors/cars/toyota/corolla/listing/5791406127",
+      "model": "Corolla",
+      "year": 2007,
+      "price": 2830,
+      "reason": "页面显示已售",
+      "addedAt": "2026-03-03T10:15:00.000Z"
+    },
+    {
+      "id": "5804167283",
+      "listingUrl": "https://www.trademe.co.nz/a/motors/cars/honda/fit/listing/5804167283",
+      "model": "Honda Fit",
+      "year": 2006,
+      "price": 2890,
+      "reason": "页面显示已售",
+      "addedAt": "2026-03-03T10:15:00.000Z"
+    },
+    {
+      "id": "5798245031",
+      "listingUrl": "https://www.trademe.co.nz/a/motors/cars/toyota/vitz/listing/5798245031",
+      "model": "Vitz",
+      "year": 2005,
+      "price": 4000,
+      "reason": "已售",
+      "addedAt": "2026-03-03T15:00:00.000Z"
+    },
+    {
+      "id": "5807234291",
+      "listingUrl": "https://www.trademe.co.nz/a/motors/cars/nissan/tiida/listing/5807234291",
+      "model": "Tiida",
+      "year": 2008,
+      "price": 4500,
+      "reason": "已售",
+      "addedAt": "2026-03-03T15:00:00.000Z"
+    },
+    {
+      "id": "5760328364",
+      "listingUrl": "https://www.trademe.co.nz/a/motors/cars/toyota/rav4/listing/5760328364",
+      "model": "RAV4",
+      "year": 2007,
+      "price": 3030,
+      "reason": "价格已更新/有问题",
+      "addedAt": "2026-03-04T09:05:00.000Z"
+    }
+  ],
+  "lastUpdated": "2026-03-04T09:05:00.000Z"
+}

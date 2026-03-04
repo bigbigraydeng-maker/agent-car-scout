@@ -1,0 +1,110 @@
+{
+  "agent": {
+    "id": "cli_a917a9e3af391cbb",
+    "name": "Car Scout Agent",
+    "version": "1.0.0",
+    "status": "active",
+    "description": "智能汽车搜索和分析助手，专注于帮助用户找到理想的汽车"
+  },
+  "api": {
+    "key": "JbyS6Xdb1ZuMe6BmXbi9XbGByUkzW7HU",
+    "endpoint": "https://api.trae.ai/v1",
+    "timeout": 30000
+  },
+  "skills": {
+    "enabled": [
+      "car-search",
+      "price-analysis",
+      "listing-comparison",
+      "market-research",
+      "user-preferences",
+      "content-repository",
+      "content-rewriter"
+    ],
+    "config": {
+      "car-search": {
+        "path": ".trae/skills/car-search",
+        "priority": "high",
+        "enabled": true,
+        "timeout": 5000,
+        "max_results": 50
+      },
+      "price-analysis": {
+        "path": ".trae/skills/price-analysis",
+        "priority": "high",
+        "enabled": true,
+        "timeout": 5000,
+        "market_data_days": 90
+      },
+      "listing-comparison": {
+        "path": ".trae/skills/listing-comparison",
+        "priority": "medium",
+        "enabled": true,
+        "timeout": 3000,
+        "max_compare": 5
+      },
+      "market-research": {
+        "path": ".trae/skills/market-research",
+        "priority": "medium",
+        "enabled": true,
+        "timeout": 5000,
+        "default_period": "3m"
+      },
+      "user-preferences": {
+        "path": ".trae/skills/user-preferences",
+        "priority": "high",
+        "enabled": true,
+        "timeout": 2000,
+        "history_limit": 50,
+        "favorites_limit": 100
+      },
+      "content-repository": {
+        "path": "../open claw/.trae/skills/content-repository",
+        "priority": "low",
+        "enabled": true,
+        "timeout": 10000,
+        "note": "从 Main Agent 继承"
+      },
+      "content-rewriter": {
+        "path": "../open claw/.trae/skills/content-rewriter",
+        "priority": "low",
+        "enabled": true,
+        "timeout": 10000,
+        "note": "从 Main Agent 继承"
+      }
+    }
+  },
+  "deployment": {
+    "environment": "production",
+    "region": "auto",
+    "scaling": {
+      "min_instances": 1,
+      "max_instances": 3
+    }
+  },
+  "capabilities": [
+    "car_search",
+    "price_analysis",
+    "listing_comparison",
+    "market_research",
+    "user_preferences",
+    "content_extraction",
+    "content_rewrite"
+  ],
+  "data_sources": {
+    "car_platforms": [
+      "瓜子二手车",
+      "优信二手车",
+      "汽车之家",
+      "懂车帝",
+      "各大4S店官网"
+    ],
+    "market_data": [
+      "中国汽车工业协会",
+      "乘联会",
+      "汽车厂商销量数据"
+    ]
+  },
+  "created_at": "2026-02-24T00:00:00Z",
+  "updated_at": "2026-02-24T16:40:00Z"
+}

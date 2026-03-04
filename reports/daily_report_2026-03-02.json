@@ -1,0 +1,1609 @@
+{
+  "date": "2026-03-02T14:30:11.544Z",
+  "summary": {
+    "totalDataPoints": 0,
+    "newDataPoints": 0,
+    "modelAccuracy": "89.59",
+    "modelMae": "10.41",
+    "healthStatus": "healthy"
+  },
+  "dataSources": {},
+  "modelPerformance": {
+    "mae": "10.41",
+    "rmse": "13.12",
+    "accuracy": "89.59",
+    "sampleSize": 50,
+    "meanAbsError": "649"
+  },
+  "monitorReport": {
+    "timestamp": "2026-03-02T14:30:11.537Z",
+    "summary": {
+      "status": "healthy",
+      "overallAccuracy": "82.24",
+      "overallMae": "17.76",
+      "sampleSize": 164
+    },
+    "metrics": {
+      "overall": {
+        "mae": "17.76",
+        "rmse": "19.18",
+        "accuracy": "82.24",
+        "meanAbsError": "1144",
+        "sampleSize": 164
+      },
+      "byModel": {
+        "toyota corolla": {
+          "avgError": "2.10",
+          "count": 21,
+          "accuracy": "97.90"
+        },
+        "toyota vitz": {
+          "avgError": "21.03",
+          "count": 15,
+          "accuracy": "78.97"
+        },
+        "toyota wish": {
+          "avgError": "10.92",
+          "count": 11,
+          "accuracy": "89.08"
+        },
+        "toyota rav4": {
+          "avgError": "13.70",
+          "count": 3,
+          "accuracy": "86.30"
+        },
+        "honda fit": {
+          "avgError": "20.92",
+          "count": 22,
+          "accuracy": "79.08"
+        },
+        "mazda demio": {
+          "avgError": "21.06",
+          "count": 22,
+          "accuracy": "78.94"
+        },
+        "toyota aqua": {
+          "avgError": "25.19",
+          "count": 22,
+          "accuracy": "74.81"
+        },
+        "suzuki swift": {
+          "avgError": "22.62",
+          "count": 22,
+          "accuracy": "77.38"
+        },
+        "honda civic": {
+          "avgError": "6.50",
+          "count": 4,
+          "accuracy": "93.50"
+        },
+        "nissan tiida": {
+          "avgError": "17.77",
+          "count": 22,
+          "accuracy": "82.23"
+        }
+      },
+      "predictions": [
+        {
+          "actual": 5250,
+          "predicted": 5360,
+          "error": 2.0952380952380953,
+          "confidence": 0.98,
+          "make": "toyota",
+          "model": "corolla",
+          "year": 2007
+        },
+        {
+          "actual": 5250,
+          "predicted": 5360,
+          "error": 2.0952380952380953,
+          "confidence": 0.98,
+          "make": "toyota",
+          "model": "corolla",
+          "year": 2007
+        },
+        {
+          "actual": 5250,
+          "predicted": 5360,
+          "error": 2.0952380952380953,
+          "confidence": 0.98,
+          "make": "toyota",
+          "model": "corolla",
+          "year": 2007
+        },
+        {
+          "actual": 5250,
+          "predicted": 5360,
+          "error": 2.0952380952380953,
+          "confidence": 0.98,
+          "make": "toyota",
+          "model": "corolla",
+          "year": 2007
+        },
+        {
+          "actual": 5250,
+          "predicted": 5360,
+          "error": 2.0952380952380953,
+          "confidence": 0.98,
+          "make": "toyota",
+          "model": "corolla",
+          "year": 2007
+        },
+        {
+          "actual": 5250,
+          "predicted": 5360,
+          "error": 2.0952380952380953,
+          "confidence": 0.98,
+          "make": "toyota",
+          "model": "corolla",
+          "year": 2007
+        },
+        {
+          "actual": 5250,
+          "predicted": 5360,
+          "error": 2.0952380952380953,
+          "confidence": 0.98,
+          "make": "toyota",
+          "model": "corolla",
+          "year": 2007
+        },
+        {
+          "actual": 5250,
+          "predicted": 5360,
+          "error": 2.0952380952380953,
+          "confidence": 0.98,
+          "make": "toyota",
+          "model": "corolla",
+          "year": 2007
+        },
+        {
+          "actual": 5250,
+          "predicted": 5360,
+          "error": 2.0952380952380953,
+          "confidence": 0.98,
+          "make": "toyota",
+          "model": "corolla",
+          "year": 2007
+        },
+        {
+          "actual": 5250,
+          "predicted": 5360,
+          "error": 2.0952380952380953,
+          "confidence": 0.98,
+          "make": "toyota",
+          "model": "corolla",
+          "year": 2007
+        },
+        {
+          "actual": 5250,
+          "predicted": 5360,
+          "error": 2.0952380952380953,
+          "confidence": 0.98,
+          "make": "toyota",
+          "model": "corolla",
+          "year": 2007
+        },
+        {
+          "actual": 5250,
+          "predicted": 5360,
+          "error": 2.0952380952380953,
+          "confidence": 0.98,
+          "make": "toyota",
+          "model": "corolla",
+          "year": 2007
+        },
+        {
+          "actual": 5250,
+          "predicted": 5360,
+          "error": 2.0952380952380953,
+          "confidence": 0.98,
+          "make": "toyota",
+          "model": "corolla",
+          "year": 2007
+        },
+        {
+          "actual": 5250,
+          "predicted": 5360,
+          "error": 2.0952380952380953,
+          "confidence": 0.98,
+          "make": "toyota",
+          "model": "corolla",
+          "year": 2007
+        },
+        {
+          "actual": 5250,
+          "predicted": 5360,
+          "error": 2.0952380952380953,
+          "confidence": 0.98,
+          "make": "toyota",
+          "model": "corolla",
+          "year": 2007
+        },
+        {
+          "actual": 5250,
+          "predicted": 5360,
+          "error": 2.0952380952380953,
+          "confidence": 0.98,
+          "make": "toyota",
+          "model": "corolla",
+          "year": 2007
+        },
+        {
+          "actual": 5250,
+          "predicted": 5360,
+          "error": 2.0952380952380953,
+          "confidence": 0.98,
+          "make": "toyota",
+          "model": "corolla",
+          "year": 2007
+        },
+        {
+          "actual": 5250,
+          "predicted": 5360,
+          "error": 2.0952380952380953,
+          "confidence": 0.98,
+          "make": "toyota",
+          "model": "corolla",
+          "year": 2007
+        },
+        {
+          "actual": 5250,
+          "predicted": 5360,
+          "error": 2.0952380952380953,
+          "confidence": 0.98,
+          "make": "toyota",
+          "model": "corolla",
+          "year": 2007
+        },
+        {
+          "actual": 5250,
+          "predicted": 5360,
+          "error": 2.0952380952380953,
+          "confidence": 0.98,
+          "make": "toyota",
+          "model": "corolla",
+          "year": 2007
+        },
+        {
+          "actual": 5250,
+          "predicted": 5360,
+          "error": 2.0952380952380953,
+          "confidence": 0.98,
+          "make": "toyota",
+          "model": "corolla",
+          "year": 2007
+        },
+        {
+          "actual": 6990,
+          "predicted": 5520,
+          "error": 21.030042918454935,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "vitz",
+          "year": 2006
+        },
+        {
+          "actual": 6990,
+          "predicted": 5520,
+          "error": 21.030042918454935,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "vitz",
+          "year": 2006
+        },
+        {
+          "actual": 6990,
+          "predicted": 5520,
+          "error": 21.030042918454935,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "vitz",
+          "year": 2006
+        },
+        {
+          "actual": 6990,
+          "predicted": 5520,
+          "error": 21.030042918454935,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "vitz",
+          "year": 2006
+        },
+        {
+          "actual": 6990,
+          "predicted": 5520,
+          "error": 21.030042918454935,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "vitz",
+          "year": 2006
+        },
+        {
+          "actual": 6990,
+          "predicted": 5520,
+          "error": 21.030042918454935,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "vitz",
+          "year": 2006
+        },
+        {
+          "actual": 6990,
+          "predicted": 5520,
+          "error": 21.030042918454935,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "vitz",
+          "year": 2006
+        },
+        {
+          "actual": 6990,
+          "predicted": 5520,
+          "error": 21.030042918454935,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "vitz",
+          "year": 2006
+        },
+        {
+          "actual": 6990,
+          "predicted": 5520,
+          "error": 21.030042918454935,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "vitz",
+          "year": 2006
+        },
+        {
+          "actual": 6990,
+          "predicted": 5520,
+          "error": 21.030042918454935,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "vitz",
+          "year": 2006
+        },
+        {
+          "actual": 6990,
+          "predicted": 5520,
+          "error": 21.030042918454935,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "vitz",
+          "year": 2006
+        },
+        {
+          "actual": 6990,
+          "predicted": 5520,
+          "error": 21.030042918454935,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "vitz",
+          "year": 2006
+        },
+        {
+          "actual": 6990,
+          "predicted": 5520,
+          "error": 21.030042918454935,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "vitz",
+          "year": 2006
+        },
+        {
+          "actual": 6990,
+          "predicted": 5520,
+          "error": 21.030042918454935,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "vitz",
+          "year": 2006
+        },
+        {
+          "actual": 6990,
+          "predicted": 5520,
+          "error": 21.030042918454935,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "vitz",
+          "year": 2006
+        },
+        {
+          "actual": 4680,
+          "predicted": 5191,
+          "error": 10.918803418803419,
+          "confidence": 0.98,
+          "make": "toyota",
+          "model": "wish",
+          "year": 2006
+        },
+        {
+          "actual": 4680,
+          "predicted": 5191,
+          "error": 10.918803418803419,
+          "confidence": 0.98,
+          "make": "toyota",
+          "model": "wish",
+          "year": 2006
+        },
+        {
+          "actual": 4680,
+          "predicted": 5191,
+          "error": 10.918803418803419,
+          "confidence": 0.98,
+          "make": "toyota",
+          "model": "wish",
+          "year": 2006
+        },
+        {
+          "actual": 4680,
+          "predicted": 5191,
+          "error": 10.918803418803419,
+          "confidence": 0.98,
+          "make": "toyota",
+          "model": "wish",
+          "year": 2006
+        },
+        {
+          "actual": 4680,
+          "predicted": 5191,
+          "error": 10.918803418803419,
+          "confidence": 0.98,
+          "make": "toyota",
+          "model": "wish",
+          "year": 2006
+        },
+        {
+          "actual": 4680,
+          "predicted": 5191,
+          "error": 10.918803418803419,
+          "confidence": 0.98,
+          "make": "toyota",
+          "model": "wish",
+          "year": 2006
+        },
+        {
+          "actual": 4680,
+          "predicted": 5191,
+          "error": 10.918803418803419,
+          "confidence": 0.98,
+          "make": "toyota",
+          "model": "wish",
+          "year": 2006
+        },
+        {
+          "actual": 4680,
+          "predicted": 5191,
+          "error": 10.918803418803419,
+          "confidence": 0.98,
+          "make": "toyota",
+          "model": "wish",
+          "year": 2006
+        },
+        {
+          "actual": 4680,
+          "predicted": 5191,
+          "error": 10.918803418803419,
+          "confidence": 0.98,
+          "make": "toyota",
+          "model": "wish",
+          "year": 2006
+        },
+        {
+          "actual": 4680,
+          "predicted": 5191,
+          "error": 10.918803418803419,
+          "confidence": 0.98,
+          "make": "toyota",
+          "model": "wish",
+          "year": 2006
+        },
+        {
+          "actual": 4680,
+          "predicted": 5191,
+          "error": 10.918803418803419,
+          "confidence": 0.98,
+          "make": "toyota",
+          "model": "wish",
+          "year": 2006
+        },
+        {
+          "actual": 6050,
+          "predicted": 5221,
+          "error": 13.702479338842974,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "rav4",
+          "year": 2015
+        },
+        {
+          "actual": 6050,
+          "predicted": 5221,
+          "error": 13.702479338842974,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "rav4",
+          "year": 2015
+        },
+        {
+          "actual": 6050,
+          "predicted": 5221,
+          "error": 13.702479338842974,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "rav4",
+          "year": 2015
+        },
+        {
+          "actual": 6989,
+          "predicted": 5527,
+          "error": 20.918586349978536,
+          "confidence": 0.97,
+          "make": "honda",
+          "model": "fit",
+          "year": 2013
+        },
+        {
+          "actual": 6989,
+          "predicted": 5527,
+          "error": 20.918586349978536,
+          "confidence": 0.97,
+          "make": "honda",
+          "model": "fit",
+          "year": 2013
+        },
+        {
+          "actual": 6989,
+          "predicted": 5527,
+          "error": 20.918586349978536,
+          "confidence": 0.97,
+          "make": "honda",
+          "model": "fit",
+          "year": 2013
+        },
+        {
+          "actual": 6989,
+          "predicted": 5527,
+          "error": 20.918586349978536,
+          "confidence": 0.97,
+          "make": "honda",
+          "model": "fit",
+          "year": 2013
+        },
+        {
+          "actual": 6989,
+          "predicted": 5527,
+          "error": 20.918586349978536,
+          "confidence": 0.97,
+          "make": "honda",
+          "model": "fit",
+          "year": 2013
+        },
+        {
+          "actual": 6989,
+          "predicted": 5527,
+          "error": 20.918586349978536,
+          "confidence": 0.97,
+          "make": "honda",
+          "model": "fit",
+          "year": 2013
+        },
+        {
+          "actual": 6989,
+          "predicted": 5527,
+          "error": 20.918586349978536,
+          "confidence": 0.97,
+          "make": "honda",
+          "model": "fit",
+          "year": 2013
+        },
+        {
+          "actual": 6989,
+          "predicted": 5527,
+          "error": 20.918586349978536,
+          "confidence": 0.97,
+          "make": "honda",
+          "model": "fit",
+          "year": 2013
+        },
+        {
+          "actual": 6989,
+          "predicted": 5527,
+          "error": 20.918586349978536,
+          "confidence": 0.97,
+          "make": "honda",
+          "model": "fit",
+          "year": 2013
+        },
+        {
+          "actual": 6989,
+          "predicted": 5527,
+          "error": 20.918586349978536,
+          "confidence": 0.97,
+          "make": "honda",
+          "model": "fit",
+          "year": 2013
+        },
+        {
+          "actual": 6989,
+          "predicted": 5527,
+          "error": 20.918586349978536,
+          "confidence": 0.97,
+          "make": "honda",
+          "model": "fit",
+          "year": 2013
+        },
+        {
+          "actual": 6989,
+          "predicted": 5527,
+          "error": 20.918586349978536,
+          "confidence": 0.97,
+          "make": "honda",
+          "model": "fit",
+          "year": 2013
+        },
+        {
+          "actual": 6989,
+          "predicted": 5527,
+          "error": 20.918586349978536,
+          "confidence": 0.97,
+          "make": "honda",
+          "model": "fit",
+          "year": 2013
+        },
+        {
+          "actual": 6989,
+          "predicted": 5527,
+          "error": 20.918586349978536,
+          "confidence": 0.97,
+          "make": "honda",
+          "model": "fit",
+          "year": 2013
+        },
+        {
+          "actual": 6989,
+          "predicted": 5527,
+          "error": 20.918586349978536,
+          "confidence": 0.97,
+          "make": "honda",
+          "model": "fit",
+          "year": 2013
+        },
+        {
+          "actual": 6989,
+          "predicted": 5527,
+          "error": 20.918586349978536,
+          "confidence": 0.97,
+          "make": "honda",
+          "model": "fit",
+          "year": 2013
+        },
+        {
+          "actual": 6989,
+          "predicted": 5527,
+          "error": 20.918586349978536,
+          "confidence": 0.97,
+          "make": "honda",
+          "model": "fit",
+          "year": 2013
+        },
+        {
+          "actual": 6989,
+          "predicted": 5527,
+          "error": 20.918586349978536,
+          "confidence": 0.97,
+          "make": "honda",
+          "model": "fit",
+          "year": 2013
+        },
+        {
+          "actual": 6989,
+          "predicted": 5527,
+          "error": 20.918586349978536,
+          "confidence": 0.97,
+          "make": "honda",
+          "model": "fit",
+          "year": 2013
+        },
+        {
+          "actual": 6989,
+          "predicted": 5527,
+          "error": 20.918586349978536,
+          "confidence": 0.97,
+          "make": "honda",
+          "model": "fit",
+          "year": 2013
+        },
+        {
+          "actual": 6989,
+          "predicted": 5527,
+          "error": 20.918586349978536,
+          "confidence": 0.97,
+          "make": "honda",
+          "model": "fit",
+          "year": 2013
+        },
+        {
+          "actual": 6989,
+          "predicted": 5527,
+          "error": 20.918586349978536,
+          "confidence": 0.97,
+          "make": "honda",
+          "model": "fit",
+          "year": 2013
+        },
+        {
+          "actual": 6990,
+          "predicted": 5518,
+          "error": 21.05865522174535,
+          "confidence": 0.97,
+          "make": "mazda",
+          "model": "demio",
+          "year": 2012
+        },
+        {
+          "actual": 6990,
+          "predicted": 5518,
+          "error": 21.05865522174535,
+          "confidence": 0.97,
+          "make": "mazda",
+          "model": "demio",
+          "year": 2012
+        },
+        {
+          "actual": 6990,
+          "predicted": 5518,
+          "error": 21.05865522174535,
+          "confidence": 0.97,
+          "make": "mazda",
+          "model": "demio",
+          "year": 2012
+        },
+        {
+          "actual": 6990,
+          "predicted": 5518,
+          "error": 21.05865522174535,
+          "confidence": 0.97,
+          "make": "mazda",
+          "model": "demio",
+          "year": 2012
+        },
+        {
+          "actual": 6990,
+          "predicted": 5518,
+          "error": 21.05865522174535,
+          "confidence": 0.97,
+          "make": "mazda",
+          "model": "demio",
+          "year": 2012
+        },
+        {
+          "actual": 6990,
+          "predicted": 5518,
+          "error": 21.05865522174535,
+          "confidence": 0.97,
+          "make": "mazda",
+          "model": "demio",
+          "year": 2012
+        },
+        {
+          "actual": 6990,
+          "predicted": 5518,
+          "error": 21.05865522174535,
+          "confidence": 0.97,
+          "make": "mazda",
+          "model": "demio",
+          "year": 2012
+        },
+        {
+          "actual": 6990,
+          "predicted": 5518,
+          "error": 21.05865522174535,
+          "confidence": 0.97,
+          "make": "mazda",
+          "model": "demio",
+          "year": 2012
+        },
+        {
+          "actual": 6990,
+          "predicted": 5518,
+          "error": 21.05865522174535,
+          "confidence": 0.97,
+          "make": "mazda",
+          "model": "demio",
+          "year": 2012
+        },
+        {
+          "actual": 6990,
+          "predicted": 5518,
+          "error": 21.05865522174535,
+          "confidence": 0.97,
+          "make": "mazda",
+          "model": "demio",
+          "year": 2012
+        },
+        {
+          "actual": 6990,
+          "predicted": 5518,
+          "error": 21.05865522174535,
+          "confidence": 0.97,
+          "make": "mazda",
+          "model": "demio",
+          "year": 2012
+        },
+        {
+          "actual": 6990,
+          "predicted": 5518,
+          "error": 21.05865522174535,
+          "confidence": 0.97,
+          "make": "mazda",
+          "model": "demio",
+          "year": 2012
+        },
+        {
+          "actual": 6990,
+          "predicted": 5518,
+          "error": 21.05865522174535,
+          "confidence": 0.97,
+          "make": "mazda",
+          "model": "demio",
+          "year": 2012
+        },
+        {
+          "actual": 6990,
+          "predicted": 5518,
+          "error": 21.05865522174535,
+          "confidence": 0.97,
+          "make": "mazda",
+          "model": "demio",
+          "year": 2012
+        },
+        {
+          "actual": 6990,
+          "predicted": 5518,
+          "error": 21.05865522174535,
+          "confidence": 0.97,
+          "make": "mazda",
+          "model": "demio",
+          "year": 2012
+        },
+        {
+          "actual": 6990,
+          "predicted": 5518,
+          "error": 21.05865522174535,
+          "confidence": 0.97,
+          "make": "mazda",
+          "model": "demio",
+          "year": 2012
+        },
+        {
+          "actual": 6990,
+          "predicted": 5518,
+          "error": 21.05865522174535,
+          "confidence": 0.97,
+          "make": "mazda",
+          "model": "demio",
+          "year": 2012
+        },
+        {
+          "actual": 6990,
+          "predicted": 5518,
+          "error": 21.05865522174535,
+          "confidence": 0.97,
+          "make": "mazda",
+          "model": "demio",
+          "year": 2012
+        },
+        {
+          "actual": 6990,
+          "predicted": 5518,
+          "error": 21.05865522174535,
+          "confidence": 0.97,
+          "make": "mazda",
+          "model": "demio",
+          "year": 2012
+        },
+        {
+          "actual": 6990,
+          "predicted": 5518,
+          "error": 21.05865522174535,
+          "confidence": 0.97,
+          "make": "mazda",
+          "model": "demio",
+          "year": 2012
+        },
+        {
+          "actual": 6990,
+          "predicted": 5518,
+          "error": 21.05865522174535,
+          "confidence": 0.97,
+          "make": "mazda",
+          "model": "demio",
+          "year": 2012
+        },
+        {
+          "actual": 6990,
+          "predicted": 5518,
+          "error": 21.05865522174535,
+          "confidence": 0.97,
+          "make": "mazda",
+          "model": "demio",
+          "year": 2012
+        },
+        {
+          "actual": 7479,
+          "predicted": 5595,
+          "error": 25.190533493782592,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "aqua",
+          "year": 2012
+        },
+        {
+          "actual": 7479,
+          "predicted": 5595,
+          "error": 25.190533493782592,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "aqua",
+          "year": 2012
+        },
+        {
+          "actual": 7479,
+          "predicted": 5595,
+          "error": 25.190533493782592,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "aqua",
+          "year": 2012
+        },
+        {
+          "actual": 7479,
+          "predicted": 5595,
+          "error": 25.190533493782592,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "aqua",
+          "year": 2012
+        },
+        {
+          "actual": 7479,
+          "predicted": 5595,
+          "error": 25.190533493782592,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "aqua",
+          "year": 2012
+        },
+        {
+          "actual": 7479,
+          "predicted": 5595,
+          "error": 25.190533493782592,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "aqua",
+          "year": 2012
+        },
+        {
+          "actual": 7479,
+          "predicted": 5595,
+          "error": 25.190533493782592,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "aqua",
+          "year": 2012
+        },
+        {
+          "actual": 7479,
+          "predicted": 5595,
+          "error": 25.190533493782592,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "aqua",
+          "year": 2012
+        },
+        {
+          "actual": 7479,
+          "predicted": 5595,
+          "error": 25.190533493782592,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "aqua",
+          "year": 2012
+        },
+        {
+          "actual": 7479,
+          "predicted": 5595,
+          "error": 25.190533493782592,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "aqua",
+          "year": 2012
+        },
+        {
+          "actual": 7479,
+          "predicted": 5595,
+          "error": 25.190533493782592,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "aqua",
+          "year": 2012
+        },
+        {
+          "actual": 7479,
+          "predicted": 5595,
+          "error": 25.190533493782592,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "aqua",
+          "year": 2012
+        },
+        {
+          "actual": 7479,
+          "predicted": 5595,
+          "error": 25.190533493782592,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "aqua",
+          "year": 2012
+        },
+        {
+          "actual": 7479,
+          "predicted": 5595,
+          "error": 25.190533493782592,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "aqua",
+          "year": 2012
+        },
+        {
+          "actual": 7479,
+          "predicted": 5595,
+          "error": 25.190533493782592,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "aqua",
+          "year": 2012
+        },
+        {
+          "actual": 7479,
+          "predicted": 5595,
+          "error": 25.190533493782592,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "aqua",
+          "year": 2012
+        },
+        {
+          "actual": 7479,
+          "predicted": 5595,
+          "error": 25.190533493782592,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "aqua",
+          "year": 2012
+        },
+        {
+          "actual": 7479,
+          "predicted": 5595,
+          "error": 25.190533493782592,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "aqua",
+          "year": 2012
+        },
+        {
+          "actual": 7479,
+          "predicted": 5595,
+          "error": 25.190533493782592,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "aqua",
+          "year": 2012
+        },
+        {
+          "actual": 7479,
+          "predicted": 5595,
+          "error": 25.190533493782592,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "aqua",
+          "year": 2012
+        },
+        {
+          "actual": 7479,
+          "predicted": 5595,
+          "error": 25.190533493782592,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "aqua",
+          "year": 2012
+        },
+        {
+          "actual": 7479,
+          "predicted": 5595,
+          "error": 25.190533493782592,
+          "confidence": 0.97,
+          "make": "toyota",
+          "model": "aqua",
+          "year": 2012
+        },
+        {
+          "actual": 4500,
+          "predicted": 5518,
+          "error": 22.62222222222222,
+          "confidence": 0.97,
+          "make": "suzuki",
+          "model": "swift",
+          "year": 2008
+        },
+        {
+          "actual": 4500,
+          "predicted": 5518,
+          "error": 22.62222222222222,
+          "confidence": 0.97,
+          "make": "suzuki",
+          "model": "swift",
+          "year": 2008
+        },
+        {
+          "actual": 4500,
+          "predicted": 5518,
+          "error": 22.62222222222222,
+          "confidence": 0.97,
+          "make": "suzuki",
+          "model": "swift",
+          "year": 2008
+        },
+        {
+          "actual": 4500,
+          "predicted": 5518,
+          "error": 22.62222222222222,
+          "confidence": 0.97,
+          "make": "suzuki",
+          "model": "swift",
+          "year": 2008
+        },
+        {
+          "actual": 4500,
+          "predicted": 5518,
+          "error": 22.62222222222222,
+          "confidence": 0.97,
+          "make": "suzuki",
+          "model": "swift",
+          "year": 2008
+        },
+        {
+          "actual": 4500,
+          "predicted": 5518,
+          "error": 22.62222222222222,
+          "confidence": 0.97,
+          "make": "suzuki",
+          "model": "swift",
+          "year": 2008
+        },
+        {
+          "actual": 4500,
+          "predicted": 5518,
+          "error": 22.62222222222222,
+          "confidence": 0.97,
+          "make": "suzuki",
+          "model": "swift",
+          "year": 2008
+        },
+        {
+          "actual": 4500,
+          "predicted": 5518,
+          "error": 22.62222222222222,
+          "confidence": 0.97,
+          "make": "suzuki",
+          "model": "swift",
+          "year": 2008
+        },
+        {
+          "actual": 4500,
+          "predicted": 5518,
+          "error": 22.62222222222222,
+          "confidence": 0.97,
+          "make": "suzuki",
+          "model": "swift",
+          "year": 2008
+        },
+        {
+          "actual": 4500,
+          "predicted": 5518,
+          "error": 22.62222222222222,
+          "confidence": 0.97,
+          "make": "suzuki",
+          "model": "swift",
+          "year": 2008
+        },
+        {
+          "actual": 4500,
+          "predicted": 5518,
+          "error": 22.62222222222222,
+          "confidence": 0.97,
+          "make": "suzuki",
+          "model": "swift",
+          "year": 2008
+        },
+        {
+          "actual": 4500,
+          "predicted": 5518,
+          "error": 22.62222222222222,
+          "confidence": 0.97,
+          "make": "suzuki",
+          "model": "swift",
+          "year": 2008
+        },
+        {
+          "actual": 4500,
+          "predicted": 5518,
+          "error": 22.62222222222222,
+          "confidence": 0.97,
+          "make": "suzuki",
+          "model": "swift",
+          "year": 2008
+        },
+        {
+          "actual": 4500,
+          "predicted": 5518,
+          "error": 22.62222222222222,
+          "confidence": 0.97,
+          "make": "suzuki",
+          "model": "swift",
+          "year": 2008
+        },
+        {
+          "actual": 4500,
+          "predicted": 5518,
+          "error": 22.62222222222222,
+          "confidence": 0.97,
+          "make": "suzuki",
+          "model": "swift",
+          "year": 2008
+        },
+        {
+          "actual": 4500,
+          "predicted": 5518,
+          "error": 22.62222222222222,
+          "confidence": 0.97,
+          "make": "suzuki",
+          "model": "swift",
+          "year": 2008
+        },
+        {
+          "actual": 4500,
+          "predicted": 5518,
+          "error": 22.62222222222222,
+          "confidence": 0.97,
+          "make": "suzuki",
+          "model": "swift",
+          "year": 2008
+        },
+        {
+          "actual": 4500,
+          "predicted": 5518,
+          "error": 22.62222222222222,
+          "confidence": 0.97,
+          "make": "suzuki",
+          "model": "swift",
+          "year": 2008
+        },
+        {
+          "actual": 4500,
+          "predicted": 5518,
+          "error": 22.62222222222222,
+          "confidence": 0.97,
+          "make": "suzuki",
+          "model": "swift",
+          "year": 2008
+        },
+        {
+          "actual": 4500,
+          "predicted": 5518,
+          "error": 22.62222222222222,
+          "confidence": 0.97,
+          "make": "suzuki",
+          "model": "swift",
+          "year": 2008
+        },
+        {
+          "actual": 4500,
+          "predicted": 5518,
+          "error": 22.62222222222222,
+          "confidence": 0.97,
+          "make": "suzuki",
+          "model": "swift",
+          "year": 2008
+        },
+        {
+          "actual": 4500,
+          "predicted": 5518,
+          "error": 22.62222222222222,
+          "confidence": 0.97,
+          "make": "suzuki",
+          "model": "swift",
+          "year": 2008
+        },
+        {
+          "actual": 5000,
+          "predicted": 5325,
+          "error": 6.5,
+          "confidence": 0.98,
+          "make": "honda",
+          "model": "civic",
+          "year": 2006
+        },
+        {
+          "actual": 5000,
+          "predicted": 5325,
+          "error": 6.5,
+          "confidence": 0.98,
+          "make": "honda",
+          "model": "civic",
+          "year": 2006
+        },
+        {
+          "actual": 5000,
+          "predicted": 5325,
+          "error": 6.5,
+          "confidence": 0.98,
+          "make": "honda",
+          "model": "civic",
+          "year": 2006
+        },
+        {
+          "actual": 5000,
+          "predicted": 5325,
+          "error": 6.5,
+          "confidence": 0.98,
+          "make": "honda",
+          "model": "civic",
+          "year": 2006
+        },
+        {
+          "actual": 6495,
+          "predicted": 5341,
+          "error": 17.767513471901463,
+          "confidence": 0.98,
+          "make": "nissan",
+          "model": "tiida",
+          "year": 2006
+        },
+        {
+          "actual": 6495,
+          "predicted": 5341,
+          "error": 17.767513471901463,
+          "confidence": 0.98,
+          "make": "nissan",
+          "model": "tiida",
+          "year": 2006
+        },
+        {
+          "actual": 6495,
+          "predicted": 5341,
+          "error": 17.767513471901463,
+          "confidence": 0.98,
+          "make": "nissan",
+          "model": "tiida",
+          "year": 2006
+        },
+        {
+          "actual": 6495,
+          "predicted": 5341,
+          "error": 17.767513471901463,
+          "confidence": 0.98,
+          "make": "nissan",
+          "model": "tiida",
+          "year": 2006
+        },
+        {
+          "actual": 6495,
+          "predicted": 5341,
+          "error": 17.767513471901463,
+          "confidence": 0.98,
+          "make": "nissan",
+          "model": "tiida",
+          "year": 2006
+        },
+        {
+          "actual": 6495,
+          "predicted": 5341,
+          "error": 17.767513471901463,
+          "confidence": 0.98,
+          "make": "nissan",
+          "model": "tiida",
+          "year": 2006
+        },
+        {
+          "actual": 6495,
+          "predicted": 5341,
+          "error": 17.767513471901463,
+          "confidence": 0.98,
+          "make": "nissan",
+          "model": "tiida",
+          "year": 2006
+        },
+        {
+          "actual": 6495,
+          "predicted": 5341,
+          "error": 17.767513471901463,
+          "confidence": 0.98,
+          "make": "nissan",
+          "model": "tiida",
+          "year": 2006
+        },
+        {
+          "actual": 6495,
+          "predicted": 5341,
+          "error": 17.767513471901463,
+          "confidence": 0.98,
+          "make": "nissan",
+          "model": "tiida",
+          "year": 2006
+        },
+        {
+          "actual": 6495,
+          "predicted": 5341,
+          "error": 17.767513471901463,
+          "confidence": 0.98,
+          "make": "nissan",
+          "model": "tiida",
+          "year": 2006
+        },
+        {
+          "actual": 6495,
+          "predicted": 5341,
+          "error": 17.767513471901463,
+          "confidence": 0.98,
+          "make": "nissan",
+          "model": "tiida",
+          "year": 2006
+        },
+        {
+          "actual": 6495,
+          "predicted": 5341,
+          "error": 17.767513471901463,
+          "confidence": 0.98,
+          "make": "nissan",
+          "model": "tiida",
+          "year": 2006
+        },
+        {
+          "actual": 6495,
+          "predicted": 5341,
+          "error": 17.767513471901463,
+          "confidence": 0.98,
+          "make": "nissan",
+          "model": "tiida",
+          "year": 2006
+        },
+        {
+          "actual": 6495,
+          "predicted": 5341,
+          "error": 17.767513471901463,
+          "confidence": 0.98,
+          "make": "nissan",
+          "model": "tiida",
+          "year": 2006
+        },
+        {
+          "actual": 6495,
+          "predicted": 5341,
+          "error": 17.767513471901463,
+          "confidence": 0.98,
+          "make": "nissan",
+          "model": "tiida",
+          "year": 2006
+        },
+        {
+          "actual": 6495,
+          "predicted": 5341,
+          "error": 17.767513471901463,
+          "confidence": 0.98,
+          "make": "nissan",
+          "model": "tiida",
+          "year": 2006
+        },
+        {
+          "actual": 6495,
+          "predicted": 5341,
+          "error": 17.767513471901463,
+          "confidence": 0.98,
+          "make": "nissan",
+          "model": "tiida",
+          "year": 2006
+        },
+        {
+          "actual": 6495,
+          "predicted": 5341,
+          "error": 17.767513471901463,
+          "confidence": 0.98,
+          "make": "nissan",
+          "model": "tiida",
+          "year": 2006
+        },
+        {
+          "actual": 6495,
+          "predicted": 5341,
+          "error": 17.767513471901463,
+          "confidence": 0.98,
+          "make": "nissan",
+          "model": "tiida",
+          "year": 2006
+        },
+        {
+          "actual": 6495,
+          "predicted": 5341,
+          "error": 17.767513471901463,
+          "confidence": 0.98,
+          "make": "nissan",
+          "model": "tiida",
+          "year": 2006
+        },
+        {
+          "actual": 6495,
+          "predicted": 5341,
+          "error": 17.767513471901463,
+          "confidence": 0.98,
+          "make": "nissan",
+          "model": "tiida",
+          "year": 2006
+        },
+        {
+          "actual": 6495,
+          "predicted": 5341,
+          "error": 17.767513471901463,
+          "confidence": 0.98,
+          "make": "nissan",
+          "model": "tiida",
+          "year": 2006
+        }
+      ]
+    },
+    "health": {
+      "issues": [],
+      "warnings": [
+        {
+          "type": "warning",
+          "message": "准确率偏低: 82.24% (建议 >= 85%)"
+        }
+      ]
+    },
+    "recommendations": [
+      {
+        "priority": "medium",
+        "action": "优化特定车型模型",
+        "reason": "以下车型表现较差: toyota aqua"
+      },
+      {
+        "priority": "low",
+        "action": "定期监控",
+        "reason": "建议每周运行一次性能监控"
+      }
+    ]
+  },
+  "recommendations": [
+    {
+      "priority": "high",
+      "action": "继续抓取数据",
+      "reason": "当前 164 条，还需要 336 条达到目标 500 条"
+    },
+    {
+      "priority": "medium",
+      "action": "继续优化",
+      "reason": "准确率 89.59% 接近目标 90%，继续努力"
+    },
+    {
+      "priority": "medium",
+      "action": "增加数据源",
+      "reason": "数据源较少，建议增加更多平台"
+    },
+    {
+      "priority": "low",
+      "action": "定期监控",
+      "reason": "建议每日运行数据抓取和模型监控"
+    }
+  ]
+}

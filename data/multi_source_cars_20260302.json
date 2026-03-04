@@ -1,0 +1,75 @@
+{
+  "scrapeDate": "2026-03-02T19:06:53.580Z",
+  "totalCount": 0,
+  "sources": [
+    "2cheapcars",
+    "autotrader",
+    "nzcheapcars",
+    "kiwicheapcars"
+  ],
+  "stats": {
+    "2cheapcars": 0,
+    "autotrader": 0,
+    "nzcheapcars": 0,
+    "kiwicheapcars": 0
+  },
+  "config": {
+    "models": [
+      {
+        "make": "toyota",
+        "model": "corolla"
+      },
+      {
+        "make": "toyota",
+        "model": "vitz"
+      },
+      {
+        "make": "toyota",
+        "model": "wish"
+      },
+      {
+        "make": "toyota",
+        "model": "rav4"
+      },
+      {
+        "make": "honda",
+        "model": "fit"
+      },
+      {
+        "make": "mazda",
+        "model": "demio"
+      },
+      {
+        "make": "toyota",
+        "model": "aqua"
+      },
+      {
+        "make": "suzuki",
+        "model": "swift"
+      },
+      {
+        "make": "toyota",
+        "model": "prius"
+      },
+      {
+        "make": "mazda",
+        "model": "axela"
+      },
+      {
+        "make": "honda",
+        "model": "civic"
+      },
+      {
+        "make": "nissan",
+        "model": "tiida"
+      }
+    ],
+    "minYear": 2006,
+    "maxMileage": 180000,
+    "minPrice": 2000,
+    "maxPrice": 7500,
+    "outputDir": "C:\\Users\\Zhong\\Documents\\trae_projects\\Agent Car Scout\\data",
+    "delay": 3000
+  },
+  "vehicles": []
+}

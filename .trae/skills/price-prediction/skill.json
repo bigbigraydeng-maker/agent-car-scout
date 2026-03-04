@@ -1,0 +1,63 @@
+{
+  "name": "price-prediction",
+  "version": "2.0",
+  "description": "高级二手车价格预测，使用随机森林算法和分层模型策略",
+  "author": "Car Scout Team",
+  "dependencies": [
+    "car-search"
+  ],
+  "capabilities": {
+    "predict_price": {
+      "description": "预测单辆车辆的价格",
+      "input": {
+        "make": "string",
+        "model": "string",
+        "year": "integer",
+        "mileage": "integer",
+        "location": "string",
+        "seller_type": "string"
+      },
+      "output": {
+        "predicted_price": "number",
+        "price_range": {
+          "min": "number",
+          "max": "number"
+        },
+        "confidence": "number",
+        "tier_predictions": "array",
+        "features": "object"
+      }
+    },
+    "batch_predict": {
+      "description": "批量预测多辆车辆价格",
+      "input": {
+        "vehicles": "array"
+      },
+      "output": {
+        "predictions": "array",
+        "summary": {
+          "total": "number",
+          "avg_price": "number",
+          "price_range": {
+            "min": "number",
+            "max": "number"
+          }
+        }
+      }
+    },
+    "get_model_info": {
+      "description": "获取模型信息",
+      "output": {
+        "accuracy": "string",
+        "training_data": "number",
+        "last_trained": "string",
+        "model_type": "string"
+      }
+    }
+  },
+  "config": {
+    "model_path": "./data/advanced_price_predictor.json",
+    "auto_retrain": false,
+    "retrain_interval_days": 7
+  }
+}
