@@ -499,8 +499,9 @@ function renderResults(data) {
     NO_DATA:    { label: '数据不足',    cls: 'pill-gray' },
   };
   const rec = recMap[profit.recommendation] || recMap.NO_DATA;
+  const _fmtProfit = p => p < 0 ? `-$${Math.abs(p).toLocaleString()}` : `+$${p.toLocaleString()}`;
   document.getElementById('r-rec-text').textContent = profit.netProfit !== null
-    ? `预期净利润 $${profit.netProfit?.toLocaleString()} NZD · ROI ${profit.roi}%`
+    ? `预期净利润 ${_fmtProfit(profit.netProfit)} NZD · ROI ${profit.roi}%`
     : '无足够数据生成建议';
   const badge = document.getElementById('r-rec-badge');
   badge.textContent = rec.label;
@@ -522,7 +523,7 @@ function renderResults(data) {
 
   const profitEl = document.getElementById('r-profit');
   const p = profit.netProfit;
-  profitEl.textContent = p !== null ? (p >= 0 ? '+' : '') + `$${p.toLocaleString()}` : '—';
+  profitEl.textContent = p !== null ? (p < 0 ? `-$${Math.abs(p).toLocaleString()}` : `+$${p.toLocaleString()}`) : '—';
   profitEl.className = `text-xl font-bold font-mono ${p === null ? 'text-gray-500' : p >= 3000 ? 'text-green-400' : p >= 0 ? 'text-yellow-400' : 'text-red-400'}`;
   document.getElementById('r-margin').textContent = p !== null ? `利润率 ${profit.marginPct}%` : '';
 
@@ -734,8 +735,8 @@ async function loadMarket(modelKey) {
           <div class="flex-1 mr-4">
             <div class="text-white text-sm font-medium">${l.title || '—'}</div>
             <div class="text-gray-600 text-xs mt-1">
-              ${l.year || '?'} · ${l.km ? l.km.toLocaleString() + ' km' : '里程未知'} ·
-              ${l.grade || ''} ·
+              ${l.year || '?'} · ${l.km ? l.km.toLocaleString() + ' km' : '里程未知'}
+              ${l.grade ? ' · ' + l.grade : ''} ·
               <span class="capitalize">${l.seller_type || 'unknown'}</span>
               ${l.location ? ' · ' + l.location : ''}
               <span class="text-blue-500"> · ${l.platform}</span>
