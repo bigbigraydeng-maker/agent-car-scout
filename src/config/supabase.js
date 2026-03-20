@@ -32,8 +32,8 @@ const TABLES = {
 };
 
 // 为了兼容性，同时导出 supabaseAdmin 和 supabase
-module.exports = { 
+module.exports = {
   supabase,
-  supabaseAdmin: supabase,
-  TABLES 
+  supabaseAdmin,
+  TABLES
 };
