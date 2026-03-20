@@ -254,9 +254,35 @@
                   <input id="adv-maf" type="number" class="inp" placeholder="420" step="20">
                 </div>
               </div>
-              <div>
-                <div class="label">销售费用 (NZD，广告/整备)</div>
-                <input id="adv-selling" type="number" class="inp" placeholder="800" step="100">
+              <div class="grid grid-cols-2 gap-2">
+                <div>
+                  <div class="label">WOF 费用 (NZD)</div>
+                  <input id="adv-wof" type="number" class="inp" placeholder="80" step="10">
+                </div>
+                <div>
+                  <div class="label">注册费 (NZD)</div>
+                  <input id="adv-registration" type="number" class="inp" placeholder="300" step="10">
+                </div>
+              </div>
+              <div class="grid grid-cols-2 gap-2">
+                <div>
+                  <div class="label">银行电汇合计 (NZD)</div>
+                  <input id="adv-bankwire" type="number" class="inp" placeholder="160" step="10">
+                </div>
+                <div>
+                  <div class="label">杂费/文件费 (NZD)</div>
+                  <input id="adv-misc" type="number" class="inp" placeholder="250" step="50">
+                </div>
+              </div>
+              <div class="grid grid-cols-2 gap-2">
+                <div>
+                  <div class="label">海运保险率 (%)</div>
+                  <input id="adv-marine" type="number" class="inp" placeholder="0.8" step="0.1" min="0">
+                </div>
+                <div>
+                  <div class="label">销售费用 (NZD)</div>
+                  <input id="adv-selling" type="number" class="inp" placeholder="800" step="100">
+                </div>
               </div>
               <button class="btn-ghost w-full text-xs" onclick="resetAdvanced()">↺ 恢复默认值</button>
             </div>
@@ -660,31 +686,38 @@ function setAdvMode(mode) {
 }
 
 function resetAdvanced() {
-  const shipping = DEFAULT_COSTS.shippingRoRo[selectedModel] || 2200;
-  document.getElementById('adv-commission').value  = '';
-  document.getElementById('adv-shipping').value    = '';
-  document.getElementById('adv-jpfreight').value   = '';
-  document.getElementById('adv-exportdocs').value  = '';
-  document.getElementById('adv-compliance').value  = '';
-  document.getElementById('adv-maf').value         = '';
-  document.getElementById('adv-selling').value     = '';
+  ['adv-commission','adv-shipping','adv-jpfreight','adv-exportdocs',
+   'adv-compliance','adv-maf','adv-wof','adv-registration',
+   'adv-bankwire','adv-misc','adv-marine','adv-selling']
+    .forEach(id => { document.getElementById(id).value = ''; });
 }
 
 function getOverrides() {
   if (advMode !== 'manual') return {};
   const o = {};
-  const commission = parseFloat(document.getElementById('adv-commission').value);
-  const shipping   = parseFloat(document.getElementById('adv-shipping').value);
-  const jpfreight  = parseFloat(document.getElementById('adv-jpfreight').value);
-  const exportdocs = parseFloat(document.getElementById('adv-exportdocs').value);
-  const compliance = parseFloat(document.getElementById('adv-compliance').value);
-  const maf        = parseFloat(document.getElementById('adv-maf').value);
-  if (!isNaN(commission))  o.agentCommissionRate = commission / 100;
-  if (!isNaN(shipping))    o.shipping            = shipping;
-  if (!isNaN(jpfreight))   o.japanFreight        = jpfreight;
-  if (!isNaN(exportdocs))  o.exportDocs          = exportdocs;
-  if (!isNaN(compliance))  o.compliance          = compliance;
-  if (!isNaN(maf))         o.nzMaf               = maf;
+  const read = id => parseFloat(document.getElementById(id).value);
+  const commission = read('adv-commission');
+  const shipping   = read('adv-shipping');
+  const jpfreight  = read('adv-jpfreight');
+  const exportdocs = read('adv-exportdocs');
+  const compliance = read('adv-compliance');
+  const maf        = read('adv-maf');
+  const wof        = read('adv-wof');
+  const reg        = read('adv-registration');
+  const bankwire   = read('adv-bankwire');
+  const misc       = read('adv-misc');
+  const marine     = read('adv-marine');
+  if (!isNaN(commission))  o.agentCommissionRate  = commission / 100;
+  if (!isNaN(shipping))    o.shipping             = shipping;
+  if (!isNaN(jpfreight))   o.japanFreight         = jpfreight;
+  if (!isNaN(exportdocs))  o.exportDocs           = exportdocs;
+  if (!isNaN(compliance))  o.compliance           = compliance;
+  if (!isNaN(maf))         o.nzMaf                = maf;
+  if (!isNaN(wof))         o.nzWof                = wof;
+  if (!isNaN(reg))         o.nzRegistration       = reg;
+  if (!isNaN(bankwire))    o.bankWire             = bankwire;
+  if (!isNaN(misc))        o.miscAdmin            = misc;
+  if (!isNaN(marine))      o.marineInsuranceRate  = marine / 100;
   return o;
 }
 

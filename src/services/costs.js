@@ -119,11 +119,11 @@ function calculateImportCosts(params) {
     isPremiumGrade ? complianceTiers.premium : complianceTiers.base
   );
 
-  const nzMaf            = overrides.nzMaf         ?? COST_CONFIG.nzMaf;
-  const nzWof            = COST_CONFIG.nzWof;
-  const nzRegistration   = COST_CONFIG.nzRegistration;
-  const bankWire         = COST_CONFIG.bankWire * 2;   // 两笔电汇 (定金 + 尾款)
-  const miscAdmin        = COST_CONFIG.miscAdmin;
+  const nzMaf            = overrides.nzMaf          ?? COST_CONFIG.nzMaf;
+  const nzWof            = overrides.nzWof           ?? COST_CONFIG.nzWof;
+  const nzRegistration   = overrides.nzRegistration  ?? COST_CONFIG.nzRegistration;
+  const bankWire         = overrides.bankWire        !== undefined ? overrides.bankWire : COST_CONFIG.bankWire * 2;
+  const miscAdmin        = overrides.miscAdmin       ?? COST_CONFIG.miscAdmin;
 
   // ── 合计 ─────────────────────────────────────────────────────
   const totalLandedCost = auctionNzd + agentCommission + japanFreight + exportDocs
@@ -272,16 +272,18 @@ function reverseAuctionPrice(params) {
   const complianceTiers = COST_CONFIG.complianceFees[modelKey];
   const isPremiumGrade  = /executive|executive lounge|zg|a premium tss/i.test(grade || '');
   const compliance = overrides.compliance ?? (isPremiumGrade ? complianceTiers.premium : complianceTiers.base);
-  const nzMaf      = overrides.nzMaf ?? COST_CONFIG.nzMaf;
+  const nzMaf        = overrides.nzMaf         ?? COST_CONFIG.nzMaf;
+  const nzWof        = overrides.nzWof         ?? COST_CONFIG.nzWof;
+  const nzRegistration = overrides.nzRegistration ?? COST_CONFIG.nzRegistration;
+  const bankWire     = overrides.bankWire      !== undefined ? overrides.bankWire : COST_CONFIG.bankWire * 2;
+  const miscAdmin    = overrides.miscAdmin     ?? COST_CONFIG.miscAdmin;
 
   // 固定成本 (与拍卖价无关)
-  // fob_fixed 中含 japanFreight + exportDocs 的保险和 GST
-  const fobFixed      = japanFreight + exportDocs;
+  const fobFixed       = japanFreight + exportDocs;
   const insuranceFixed = fobFixed * ri;
   const cifFixed       = fobFixed + shipping + insuranceFixed;
   const gstFixed       = cifFixed * rg;
-  const otherFixed     = nzMaf + COST_CONFIG.nzWof + COST_CONFIG.nzRegistration
-                         + COST_CONFIG.bankWire * 2 + COST_CONFIG.miscAdmin + compliance;
+  const otherFixed     = nzMaf + nzWof + nzRegistration + bankWire + miscAdmin + compliance;
   const totalFixed = japanFreight + exportDocs + shipping + insuranceFixed + gstFixed + otherFixed;
 
   // 拍卖价乘数: totalLanded_variable = A_nzd * (1+rc)*(1+ri)*(1+rg)
@@ -309,12 +311,9 @@ function reverseAuctionPrice(params) {
     sellingExpenses,
     breakdown: {
       japanFreight, exportDocs, shipping, compliance, nzMaf,
-      nzWof:         COST_CONFIG.nzWof,
-      nzRegistration: COST_CONFIG.nzRegistration,
-      bankWire:      COST_CONFIG.bankWire * 2,
-      miscAdmin:     COST_CONFIG.miscAdmin,
-      gstFixed:      Math.round(gstFixed),
-      totalFixed:    Math.round(totalFixed),
+      nzWof, nzRegistration, bankWire, miscAdmin,
+      gstFixed:   Math.round(gstFixed),
+      totalFixed: Math.round(totalFixed),
     },
     verification,
   };
