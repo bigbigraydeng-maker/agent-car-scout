@@ -94,15 +94,17 @@ function calculateImportCosts(params) {
   const rate = parseFloat(jpyToNzd);
 
   // ── 日本端 ─────────────────────────────────────────────────
+  const agentCommRate   = overrides.agentCommissionRate ?? COST_CONFIG.agentCommissionRate;
   const auctionNzd      = Math.round(auctionPriceJpy * rate);
-  const agentCommission = Math.round(auctionNzd * COST_CONFIG.agentCommissionRate);
+  const agentCommission = Math.round(auctionNzd * agentCommRate);
   const japanFreight    = overrides.japanFreight    ?? COST_CONFIG.japanDomesticFreight;
   const exportDocs      = overrides.exportDocs      ?? COST_CONFIG.japanExportDocs;
   const fobNzd          = auctionNzd + agentCommission + japanFreight + exportDocs;
 
   // ── 海运 ────────────────────────────────────────────────────
   const shipping        = overrides.shipping ?? COST_CONFIG.shippingRoRo[modelKey] ?? 2000;
-  const insurance       = Math.round(fobNzd * COST_CONFIG.marineInsuranceRate);
+  const marineRate      = overrides.marineInsuranceRate ?? COST_CONFIG.marineInsuranceRate;
+  const insurance       = Math.round(fobNzd * marineRate);
   const cifNzd          = fobNzd + shipping + insurance;  // Cost + Insurance + Freight
 
   // ── NZ 进口税 ────────────────────────────────────────────────
@@ -224,4 +226,98 @@ function analyzeProfits(estimatedNzPrice, costs, sellingExpenses = 800) {
   };
 }
 
-module.exports = { calculateImportCosts, analyzeProfits, COST_CONFIG };
+/**
+ * 反算最高拍卖价
+ *
+ * 给定目标净利润，代入 NZ 预测售价，反推允许的最高拍卖价 (JPY)。
+ *
+ * 代数推导：
+ *   totalLanded = A_nzd * (1+rc)*(1+ri)*(1+rg)  +  固定成本
+ *   netProfit   = estimatedNzPrice - totalLanded - sellingExpenses
+ *   → maxAuctionNzd = (estimatedNzPrice - fixedCosts - sellingExpenses - targetNetProfit)
+ *                      / ((1+rc)*(1+ri)*(1+rg))
+ *
+ * @param {object} params
+ * @param {string} params.modelKey
+ * @param {string} params.grade
+ * @param {number} params.estimatedNzPrice  - 系统预测的 NZ 售价
+ * @param {number} params.jpyToNzd
+ * @param {number} params.targetNetProfit   - 目标最低净利润 (NZD), 默认 0
+ * @param {number} params.sellingExpenses   - 销售费用, 默认 800
+ * @param {object} params.overrides
+ */
+function reverseAuctionPrice(params) {
+  const {
+    modelKey,
+    grade,
+    estimatedNzPrice,
+    jpyToNzd = 0.0115,
+    targetNetProfit = 0,
+    sellingExpenses = 800,
+    overrides = {},
+  } = params;
+
+  const rate    = parseFloat(jpyToNzd);
+  const vehicle = VEHICLES[modelKey];
+  if (!vehicle) throw new Error(`Unknown model: ${modelKey}`);
+
+  const rc = overrides.agentCommissionRate  ?? COST_CONFIG.agentCommissionRate;
+  const ri = overrides.marineInsuranceRate  ?? COST_CONFIG.marineInsuranceRate;
+  const rg = COST_CONFIG.gstRate;
+
+  const japanFreight = overrides.japanFreight ?? COST_CONFIG.japanDomesticFreight;
+  const exportDocs   = overrides.exportDocs   ?? COST_CONFIG.japanExportDocs;
+  const shipping     = overrides.shipping     ?? (COST_CONFIG.shippingRoRo[modelKey] ?? 2000);
+
+  const complianceTiers = COST_CONFIG.complianceFees[modelKey];
+  const isPremiumGrade  = /executive|executive lounge|zg|a premium tss/i.test(grade || '');
+  const compliance = overrides.compliance ?? (isPremiumGrade ? complianceTiers.premium : complianceTiers.base);
+  const nzMaf      = overrides.nzMaf ?? COST_CONFIG.nzMaf;
+
+  // 固定成本 (与拍卖价无关)
+  // fob_fixed 中含 japanFreight + exportDocs 的保险和 GST
+  const fobFixed      = japanFreight + exportDocs;
+  const insuranceFixed = fobFixed * ri;
+  const cifFixed       = fobFixed + shipping + insuranceFixed;
+  const gstFixed       = cifFixed * rg;
+  const otherFixed     = nzMaf + COST_CONFIG.nzWof + COST_CONFIG.nzRegistration
+                         + COST_CONFIG.bankWire * 2 + COST_CONFIG.miscAdmin + compliance;
+  const totalFixed = japanFreight + exportDocs + shipping + insuranceFixed + gstFixed + otherFixed;
+
+  // 拍卖价乘数: totalLanded_variable = A_nzd * (1+rc)*(1+ri)*(1+rg)
+  const auctionMultiplier = (1 + rc) * (1 + ri) * (1 + rg);
+
+  // 反算
+  const maxAuctionNzd = (estimatedNzPrice - totalFixed - sellingExpenses - targetNetProfit) / auctionMultiplier;
+  const maxAuctionJpy = Math.floor(maxAuctionNzd / rate);
+
+  // 验证：以最高拍卖价计算实际利润 (应约等于 targetNetProfit)
+  let verification = null;
+  if (maxAuctionJpy > 0) {
+    const verifyCosts  = calculateImportCosts({ modelKey, grade, auctionPriceJpy: maxAuctionJpy, jpyToNzd, overrides });
+    const verifyProfit = analyzeProfits(estimatedNzPrice, verifyCosts, sellingExpenses);
+    verification = { costs: verifyCosts, profit: verifyProfit };
+  }
+
+  return {
+    maxAuctionJpy:    Math.max(0, maxAuctionJpy),
+    maxAuctionNzd:    Math.max(0, Math.round(maxAuctionNzd)),
+    auctionMultiplier,
+    totalFixed:       Math.round(totalFixed),
+    estimatedNzPrice,
+    targetNetProfit,
+    sellingExpenses,
+    breakdown: {
+      japanFreight, exportDocs, shipping, compliance, nzMaf,
+      nzWof:         COST_CONFIG.nzWof,
+      nzRegistration: COST_CONFIG.nzRegistration,
+      bankWire:      COST_CONFIG.bankWire * 2,
+      miscAdmin:     COST_CONFIG.miscAdmin,
+      gstFixed:      Math.round(gstFixed),
+      totalFixed:    Math.round(totalFixed),
+    },
+    verification,
+  };
+}
+
+module.exports = { calculateImportCosts, analyzeProfits, reverseAuctionPrice, COST_CONFIG };

@@ -14,7 +14,7 @@
 const express = require('express');
 const router = express.Router();
 const { predictPrice } = require('../../services/pricing');
-const { calculateImportCosts, analyzeProfits } = require('../../services/costs');
+const { calculateImportCosts, analyzeProfits, reverseAuctionPrice, COST_CONFIG } = require('../../services/costs');
 const { supabaseAdmin, TABLES } = require('../../config/supabase');
 const { VEHICLES, CONDITION_FACTORS } = require('../../data/vehicles');
 
@@ -65,6 +65,8 @@ router.post('/', async (req, res) => {
       jpyToNzd,           // 0.0115
       location,           // 'Auckland'
       notes,
+      overrides,          // 手动成本覆盖 { agentCommissionRate, japanFreight, exportDocs, shipping, compliance, nzMaf, marineInsuranceRate }
+      sellingExpenses,    // 销售费用 (默认 800)
     } = req.body;
 
     // 参数校验
@@ -100,10 +102,11 @@ router.post('/', async (req, res) => {
       grade,
       auctionPriceJpy: parseInt(auctionPriceJpy),
       jpyToNzd:        parseFloat(jpyToNzd) || 0.0115,
+      overrides:       overrides || {},
     });
 
     // ── 3. 利润分析 ────────────────────────────────────────────
-    const profit = analyzeProfits(prediction.price, costs);
+    const profit = analyzeProfits(prediction.price, costs, sellingExpenses !== undefined ? Number(sellingExpenses) : 800);
 
     // ── 4. 持久化 (可选) ───────────────────────────────────────
     let evaluationId = null;
@@ -163,6 +166,130 @@ router.post('/', async (req, res) => {
 
   } catch (err) {
     console.error('[evaluate]', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// ─── 反算最高拍卖价 ──────────────────────────────────────────
+// POST /api/evaluate/reverse
+router.post('/reverse', async (req, res) => {
+  try {
+    const {
+      modelKey, grade, modelCode, year, km, condition, isEFour,
+      jpyToNzd, location,
+      targetNetProfit = 0,
+      sellingExpenses = 800,
+      overrides = {},
+    } = req.body;
+
+    if (!modelKey || !year) {
+      return res.status(400).json({ success: false, error: '缺少必填参数: modelKey, year' });
+    }
+    if (!VEHICLES[modelKey]) {
+      return res.status(400).json({ success: false, error: `不支持的车型: ${modelKey}` });
+    }
+
+    // 1. 预测 NZ 售价
+    const prediction = await predictPrice({
+      modelKey, year: parseInt(year), km: parseInt(km) || 100000,
+      grade, condition: String(condition || '4'), modelCode,
+      isEFour: Boolean(isEFour), location,
+    });
+
+    if (!prediction.price) {
+      return res.json({ success: true, prediction, maxAuction: null, message: '无足够市场数据，无法反算' });
+    }
+
+    // 2. 反算最高拍卖价
+    const maxAuction = reverseAuctionPrice({
+      modelKey, grade,
+      estimatedNzPrice:  prediction.price,
+      jpyToNzd:          parseFloat(jpyToNzd) || 0.0115,
+      targetNetProfit:   Number(targetNetProfit),
+      sellingExpenses:   Number(sellingExpenses),
+      overrides,
+    });
+
+    res.json({ success: true, prediction, maxAuction,
+      defaults: {
+        agentCommissionRate: COST_CONFIG.agentCommissionRate,
+        japanDomesticFreight: COST_CONFIG.japanDomesticFreight,
+        japanExportDocs: COST_CONFIG.japanExportDocs,
+        shippingRoRo: COST_CONFIG.shippingRoRo[modelKey],
+        marineInsuranceRate: COST_CONFIG.marineInsuranceRate,
+      },
+    });
+  } catch (err) {
+    console.error('[evaluate/reverse]', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// ─── 本地购买估算 ────────────────────────────────────────────
+// POST /api/evaluate/local
+router.post('/local', async (req, res) => {
+  try {
+    const {
+      modelKey, grade, modelCode, year, km, condition, isEFour,
+      purchasePriceNzd,
+      location, notes,
+      sellingExpenses = 800,
+    } = req.body;
+
+    if (!modelKey || !year || !purchasePriceNzd) {
+      return res.status(400).json({ success: false, error: '缺少必填参数: modelKey, year, purchasePriceNzd' });
+    }
+    if (!VEHICLES[modelKey]) {
+      return res.status(400).json({ success: false, error: `不支持的车型: ${modelKey}` });
+    }
+
+    // 预测市场价
+    const prediction = await predictPrice({
+      modelKey, year: parseInt(year), km: parseInt(km) || 100000,
+      grade, condition: String(condition || '4'), modelCode,
+      isEFour: Boolean(isEFour), location,
+    });
+
+    // 利润分析 (成本 = 购入价 + 销售费用)
+    const buyPrice      = Number(purchasePriceNzd);
+    const sellExpenses  = Number(sellingExpenses);
+    const totalCost     = buyPrice + sellExpenses;
+    const grossProfit   = prediction.price ? prediction.price - buyPrice : null;
+    const netProfit     = prediction.price ? prediction.price - totalCost : null;
+    const marginPct     = (netProfit !== null && prediction.price) ? +((netProfit / prediction.price) * 100).toFixed(1) : null;
+    const roi           = (netProfit !== null) ? +((netProfit / buyPrice) * 100).toFixed(1) : null;
+    const marketDiscount = prediction.price ? +(((prediction.price - buyPrice) / prediction.price) * 100).toFixed(1) : null;
+
+    let recommendation = 'NO_DATA';
+    if (netProfit !== null) {
+      if (netProfit >= 5000 && marginPct >= 12)      recommendation = 'STRONG_BUY';
+      else if (netProfit >= 2000 && marginPct >= 6)  recommendation = 'BUY';
+      else if (netProfit >= 500  && marginPct >= 2)  recommendation = 'CONSIDER';
+      else if (netProfit >= 0)                        recommendation = 'MARGINAL';
+      else                                            recommendation = 'PASS';
+    }
+
+    res.json({
+      success: true,
+      mode: 'local',
+      input: { modelKey, model: VEHICLES[modelKey].model, grade, modelCode, year: parseInt(year), km: parseInt(km)||null, condition, location },
+      prediction,
+      localProfit: {
+        purchasePriceNzd:  buyPrice,
+        sellingExpenses:   sellExpenses,
+        totalCost,
+        estimatedNzPrice:  prediction.price,
+        grossProfit,
+        netProfit,
+        marginPct,
+        roi,
+        marketDiscount,
+        recommendation,
+        notes,
+      },
+    });
+  } catch (err) {
+    console.error('[evaluate/local]', err);
     res.status(500).json({ success: false, error: err.message });
   }
 });
