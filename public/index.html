@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Car Scout — 日本拍卖评估</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root { --bg: #0c0e16; --card: #141720; --border: #1e2235; --accent: #3b82f6; }
+  body { background: var(--bg); color: #e2e8f0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+  .card  { background: var(--card); border: 1px solid var(--border); border-radius: 10px; }
+  .inp   { background: var(--bg); border: 1px solid var(--border); border-radius: 7px; color: #e2e8f0; padding: 8px 11px; width: 100%; transition: border-color .15s; font-size: 13px; }
+  .inp:focus  { outline: none; border-color: var(--accent); }
+  .inp::placeholder { color: #374151; }
+  select.inp option  { background: #141720; }
+  .btn-primary   { background: var(--accent); color: #fff; padding: 10px 22px; border-radius: 7px; font-weight: 600; font-size: 13px; cursor: pointer; border: none; transition: background .15s; }
+  .btn-primary:hover    { background: #2563eb; }
+  .btn-primary:disabled { background: #1e293b; cursor: not-allowed; color: #4b5563; }
+  .btn-ghost { border: 1px solid var(--border); color: #6b7280; padding: 6px 14px; border-radius: 7px; cursor: pointer; background: transparent; font-size: 12px; transition: all .15s; }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+  .label { font-size: 11px; color: #6b7280; margin-bottom: 5px; font-weight: 500; letter-spacing: .04em; }
+  .sec-title { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #374151; margin-bottom: 12px; }
+  .pill { display: inline-flex; align-items: center; padding: 2px 9px; border-radius: 999px; font-size: 11px; font-weight: 600; }
+  .pill-green  { background:#052e16; color:#4ade80; border:1px solid #14532d; }
+  .pill-yellow { background:#1c1400; color:#fbbf24; border:1px solid #713f12; }
+  .pill-orange { background:#1a0d00; color:#fb923c; border:1px solid #7c2d12; }
+  .pill-red    { background:#1a0007; color:#f87171; border:1px solid #7f1d1d; }
+  .pill-blue   { background:#0d1f3c; color:#60a5fa; border:1px solid #1e3a5f; }
+  .pill-gray   { background:#111; color:#6b7280; border:1px solid #1f2937; }
+  .row { display:flex; justify-content:space-between; align-items:center; padding:6px 0; border-bottom:1px solid var(--border); font-size:12px; }
+  .row:last-child { border:none; }
+  .row-total { border-top: 2px solid var(--accent) !important; margin-top:4px; padding-top:10px; font-weight:700; font-size:13px; }
+  .tab-btn { padding:6px 14px; border-radius:6px; font-size:12px; color:#6b7280; cursor:pointer; transition:all .15s; }
+  .tab-btn.on { background:#1e3a5f; color:#60a5fa; }
+  .comp-card { background: var(--bg); border:1px solid var(--border); border-radius:7px; padding:10px 12px; margin-bottom:7px; }
+  .comp-card:hover { border-color:#2563eb; }
+  .spinner { width:32px;height:32px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite; }
+  @keyframes spin { to { transform:rotate(360deg); } }
+  .confidence-high   { color:#4ade80; }
+  .confidence-medium { color:#fbbf24; }
+  .confidence-low    { color:#fb923c; }
+  .confidence-none   { color:#6b7280; }
+  .grade-badge { display:inline-block; padding:1px 7px; border-radius:4px; font-size:10px; font-weight:700; }
+  .grade-premium { background:#1e1040; color:#a78bfa; }
+  .grade-high    { background:#0d1f3c; color:#60a5fa; }
+  .grade-mid     { background:#051a10; color:#34d399; }
+  .grade-base    { background:#1a1a1a; color:#9ca3af; }
+
+  /* Pipeline kanban */
+  .kancol { min-height:80px; }
+  .kancard { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:10px; margin-bottom:8px; cursor:pointer; transition:border-color .15s; font-size:12px; }
+  .kancard:hover { border-color:var(--accent); }
+  .status-dot { width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:5px; }
+</style>
+</head>
+<body class="min-h-screen">
+
+<!-- ── Header ─────────────────────────────────────────────── -->
+<header class="border-b border-gray-800/60 px-5 py-3 flex items-center justify-between">
+  <div class="flex items-center gap-3">
+    <div class="w-7 h-7 bg-blue-600 rounded-lg flex items-center justify-center text-white font-black text-xs">CS</div>
+    <div>
+      <div class="font-semibold text-sm text-white">Car Scout</div>
+      <div class="text-xs text-gray-600">Alphard · Vellfire · Prius — 日本→新西兰</div>
+    </div>
+  </div>
+  <div class="flex items-center gap-2">
+    <span id="rateTag" class="text-xs text-gray-600 bg-gray-900 px-2 py-1 rounded cursor-pointer" onclick="focusRate()" title="点击修改汇率">
+      JPY/NZD <span id="rateVal" class="text-blue-400 font-mono">0.0115</span>
+    </span>
+    <nav class="flex gap-1">
+      <button class="tab-btn on" onclick="showPage('evaluate')">评估</button>
+      <button class="tab-btn"    onclick="showPage('pipeline')">管道</button>
+      <button class="tab-btn"    onclick="showPage('market')">市场</button>
+    </nav>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════════════════════════
+     PAGE: EVALUATE
+════════════════════════════════════════════════════════════ -->
+<div id="page-evaluate" class="max-w-6xl mx-auto px-4 py-5">
+  <div class="grid grid-cols-1 lg:grid-cols-5 gap-5">
+
+    <!-- Left: Form -->
+    <div class="lg:col-span-2 space-y-4">
+
+      <!-- Model selector -->
+      <div class="card p-4">
+        <div class="sec-title">选择车型</div>
+        <div class="grid grid-cols-3 gap-2">
+          <button class="model-btn py-3 rounded-lg border-2 border-blue-600 bg-blue-900/20 text-xs font-bold text-blue-400 transition-all"
+                  data-key="alphard" onclick="selectModel('alphard')">
+            <div class="text-base">🚐</div>Alphard
+          </button>
+          <button class="model-btn py-3 rounded-lg border border-gray-800 text-xs font-bold text-gray-500 transition-all"
+                  data-key="vellfire" onclick="selectModel('vellfire')">
+            <div class="text-base">🚌</div>Vellfire
+          </button>
+          <button class="model-btn py-3 rounded-lg border border-gray-800 text-xs font-bold text-gray-500 transition-all"
+                  data-key="prius" onclick="selectModel('prius')">
+            <div class="text-base">⚡</div>Prius
+          </button>
+        </div>
+      </div>
+
+      <!-- Vehicle details -->
+      <div class="card p-4 space-y-3">
+        <div class="sec-title">车辆信息</div>
+
+        <div>
+          <div class="label">配置等级 (Grade)</div>
+          <select id="grade" class="inp" onchange="onGradeChange()">
+            <option value="">— 选择配置 —</option>
+          </select>
+          <div id="gradeDesc" class="text-xs text-gray-600 mt-1"></div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <div class="label">型号代码</div>
+            <select id="modelCode" class="inp">
+              <option value="">— 选择 —</option>
+            </select>
+          </div>
+          <div>
+            <div class="label">年份</div>
+            <input id="year" type="number" class="inp" placeholder="2017" min="2005" max="2025">
+          </div>
+        </div>
+
+        <div>
+          <div class="label">公里数 (km)</div>
+          <input id="km" type="number" class="inp" placeholder="96998" oninput="updateKmHint()">
+          <div id="kmHint" class="text-xs text-gray-600 mt-1"></div>
+        </div>
+
+        <div>
+          <div class="label">车况评分 (日本拍卖)</div>
+          <select id="condition" class="inp">
+            <option value="5">5 — 极好，接近完美</option>
+            <option value="4.5">4.5 — 非常好</option>
+            <option value="4" selected>4 — 好 (标准基准)</option>
+            <option value="3.5">3.5 — 较好，有轻微瑕疵</option>
+            <option value="3">3 — 一般，有明显瑕疵</option>
+            <option value="2">2 — 差，多处损伤</option>
+            <option value="R">R — 修复车</option>
+            <option value="RA">RA — 修复车 (气囊展开过)</option>
+            <option value="A">A — 事故车</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Cost inputs -->
+      <div class="card p-4 space-y-3">
+        <div class="sec-title">成本设置</div>
+        <div>
+          <div class="label">拍卖成本价 (JPY ¥)</div>
+          <input id="auctionPrice" type="number" class="inp" placeholder="2500000" step="10000" oninput="updateJpyPreview()">
+          <div id="jpyPreview" class="text-xs text-blue-400/70 mt-1 font-mono"></div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <div class="label">JPY → NZD 汇率</div>
+            <input id="jpyRate" type="number" class="inp" value="0.0115" step="0.0001" oninput="updateRateDisplay(); updateJpyPreview()">
+          </div>
+          <div>
+            <div class="label">目标城市</div>
+            <select id="location" class="inp">
+              <option value="Auckland">Auckland</option>
+              <option value="Waikato">Hamilton / Waikato</option>
+              <option value="Wellington">Wellington</option>
+              <option value="Christchurch">Christchurch</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <div class="label">备注 (选配/维修记录等)</div>
+          <textarea id="notes" class="inp" rows="2" placeholder="e.g. JBL, sunroof, 4WD..."></textarea>
+        </div>
+      </div>
+
+      <button id="evalBtn" class="btn-primary w-full" onclick="runEval()">开始评估</button>
+      <div class="text-center">
+        <button class="btn-ghost" onclick="loadExample()">载入示例 (2017 Alphard Executive Lounge)</button>
+      </div>
+    </div>
+
+    <!-- Right: Results -->
+    <div class="lg:col-span-3">
+
+      <!-- Empty -->
+      <div id="r-empty" class="card p-12 text-center">
+        <div class="text-5xl mb-4">🚗</div>
+        <div class="text-gray-500 text-sm">填写左侧表单，点击「开始评估」</div>
+        <div class="text-gray-700 text-xs mt-2">系统将对比 NZ 市场数据，预测转手利润</div>
+      </div>
+
+      <!-- Loading -->
+      <div id="r-loading" class="card p-12 text-center hidden">
+        <div class="flex justify-center mb-4"><div class="spinner"></div></div>
+        <div class="text-gray-500 text-sm">正在评估...</div>
+      </div>
+
+      <!-- Results -->
+      <div id="r-results" class="space-y-4 hidden">
+
+        <!-- Recommendation banner -->
+        <div id="r-banner" class="card p-4 flex items-center justify-between">
+          <div>
+            <div class="text-xs text-gray-600 mb-1">竞拍建议</div>
+            <div id="r-rec-text" class="text-sm"></div>
+          </div>
+          <div id="r-rec-badge" class="text-sm font-bold px-4 py-2 rounded-lg"></div>
+        </div>
+
+        <!-- Key numbers -->
+        <div class="grid grid-cols-3 gap-3">
+          <div class="card p-4 text-center">
+            <div class="text-xs text-gray-600 mb-1">NZ 预测售价</div>
+            <div id="r-nzprice" class="text-xl font-bold text-white font-mono"></div>
+            <div id="r-nzrange" class="text-xs text-gray-600 mt-1 font-mono"></div>
+            <div id="r-confidence" class="text-xs mt-1"></div>
+          </div>
+          <div class="card p-4 text-center">
+            <div class="text-xs text-gray-600 mb-1">落地总成本</div>
+            <div id="r-cost" class="text-xl font-bold text-orange-400 font-mono"></div>
+            <div class="text-xs text-gray-600 mt-1">含税、合规、运费</div>
+          </div>
+          <div class="card p-4 text-center">
+            <div class="text-xs text-gray-600 mb-1">预期净利润</div>
+            <div id="r-profit" class="text-xl font-bold font-mono"></div>
+            <div id="r-margin" class="text-xs text-gray-600 mt-1"></div>
+          </div>
+        </div>
+
+        <!-- Profit bar -->
+        <div class="card p-4">
+          <div class="flex justify-between text-xs text-gray-600 mb-2">
+            <span>成本结构</span><span id="r-costpct"></span>
+          </div>
+          <div class="h-2 rounded bg-gray-800 overflow-hidden">
+            <div id="r-costbar" class="h-full rounded bg-orange-500 transition-all duration-500" style="width:0%"></div>
+          </div>
+          <div class="flex justify-between text-xs mt-2">
+            <span class="text-orange-400">成本</span>
+            <span class="text-green-400">利润空间</span>
+          </div>
+        </div>
+
+        <!-- Payment plan -->
+        <div class="card p-4">
+          <div class="sec-title">付款计划</div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <div class="text-xs text-gray-600">立即支付定金 (拍卖价 10%)</div>
+              <div id="r-deposit" class="text-lg font-semibold text-blue-400 mt-1 font-mono"></div>
+              <div class="text-xs text-gray-700 mt-1">拍到车后立即支付</div>
+            </div>
+            <div>
+              <div class="text-xs text-gray-600">落地后 60 天内支付尾款</div>
+              <div id="r-balance" class="text-lg font-semibold text-gray-300 mt-1 font-mono"></div>
+              <div class="text-xs text-gray-700 mt-1">含所有进口税费</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabs: costs / comparables -->
+        <div class="card">
+          <div class="flex gap-1 p-3 border-b border-gray-800/60">
+            <button class="tab-btn on" id="rt-costs" onclick="showResultTab('costs')">成本明细</button>
+            <button class="tab-btn"    id="rt-comp"  onclick="showResultTab('comp')">可比挂牌</button>
+            <button class="tab-btn"    id="rt-model" onclick="showResultTab('model')">定价模型</button>
+          </div>
+          <div id="rp-costs" class="p-4 text-sm" id="rp-costs"></div>
+          <div id="rp-comp"  class="p-4 hidden"></div>
+          <div id="rp-model" class="p-4 hidden"></div>
+        </div>
+
+        <!-- Add to pipeline -->
+        <button id="r-addpipeline" class="btn-ghost w-full" onclick="addToPipeline()">
+          + 加入车辆跟踪管道
+        </button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     PAGE: PIPELINE
+════════════════════════════════════════════════════════════ -->
+<div id="page-pipeline" class="max-w-7xl mx-auto px-4 py-5 hidden">
+  <div class="flex items-center justify-between mb-5">
+    <h2 class="text-sm font-semibold">车辆跟踪管道</h2>
+    <div class="flex gap-2">
+      <button class="btn-ghost" onclick="loadPipeline()">刷新</button>
+      <button class="btn-primary text-xs" onclick="showPage('evaluate')">+ 新增评估</button>
+    </div>
+  </div>
+  <div id="pipeline-summary" class="grid grid-cols-4 gap-3 mb-5"></div>
+  <div id="pipeline-board" class="grid gap-3" style="grid-template-columns: repeat(8, 1fr)">
+    <div class="col-span-8 text-center text-gray-600 text-xs py-8">加载中...</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     PAGE: MARKET
+════════════════════════════════════════════════════════════ -->
+<div id="page-market" class="max-w-5xl mx-auto px-4 py-5 hidden">
+  <div class="flex items-center justify-between mb-5">
+    <h2 class="text-sm font-semibold">NZ 市场挂牌数据</h2>
+    <div class="flex gap-2">
+      <button class="btn-ghost text-xs" onclick="triggerScrape()">🔄 触发爬取</button>
+    </div>
+  </div>
+  <div class="flex gap-2 mb-4">
+    <button class="tab-btn on market-tab" data-model="alphard"  onclick="loadMarket('alphard')">Alphard</button>
+    <button class="tab-btn market-tab"    data-model="vellfire" onclick="loadMarket('vellfire')">Vellfire</button>
+    <button class="tab-btn market-tab"    data-model="prius"    onclick="loadMarket('prius')">Prius</button>
+  </div>
+  <div id="market-stats" class="grid grid-cols-4 gap-3 mb-4"></div>
+  <div id="market-list"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<script>
+// ── State ──────────────────────────────────────────────────
+let vehicleMeta = {};       // from /api/evaluate/vehicles
+let selectedModel = 'alphard';
+let lastResult = null;
+
+// ── Init ───────────────────────────────────────────────────
+async function init() {
+  try {
+    const r = await fetch('/api/evaluate/vehicles');
+    const d = await r.json();
+    if (d.success) {
+      vehicleMeta = {};
+      d.vehicles.forEach(v => vehicleMeta[v.key] = v);
+    }
+  } catch(_) {}
+  selectModel('alphard');
+}
+
+// ── Page routing ────────────────────────────────────────────
+function showPage(name) {
+  ['evaluate','pipeline','market'].forEach(p => {
+    document.getElementById('page-' + p).classList.toggle('hidden', p !== name);
+  });
+  document.querySelectorAll('nav .tab-btn').forEach((b, i) => {
+    const names = ['evaluate','pipeline','market'];
+    b.classList.toggle('on', names[i] === name);
+  });
+  if (name === 'pipeline') loadPipeline();
+  if (name === 'market')   loadMarket('alphard');
+}
+
+// ── Model selection ─────────────────────────────────────────
+function selectModel(key) {
+  selectedModel = key;
+  document.querySelectorAll('.model-btn').forEach(b => {
+    const on = b.dataset.key === key;
+    b.className = `model-btn py-3 rounded-lg border-2 text-xs font-bold transition-all ${on
+      ? 'border-blue-600 bg-blue-900/20 text-blue-400'
+      : 'border-gray-800 text-gray-500'}`;
+  });
+
+  const meta = vehicleMeta[key];
+  if (!meta) return;
+
+  // Grade dropdown
+  const gradeEl = document.getElementById('grade');
+  gradeEl.innerHTML = '<option value="">— 选择配置 —</option>'
+    + meta.grades.map(g =>
+        `<option value="${g.name}" data-tier="${g.tier}" data-desc="${g.description}">${g.name}${g.factor < 1 ? ' (×' + g.factor.toFixed(2) + ')' : ''}</option>`
+      ).join('');
+
+  // Model code dropdown
+  const codeEl = document.getElementById('modelCode');
+  codeEl.innerHTML = '<option value="">— 选择 —</option>'
+    + Object.entries(meta.modelCodes || {}).map(([code, desc]) =>
+        `<option value="${code}">${code} — ${desc}</option>`
+      ).join('');
+
+  // Year range hint
+  const yr = meta.yearRange;
+  document.getElementById('year').placeholder = String(yr.max - 2);
+  document.getElementById('gradeDesc').textContent = '';
+}
+
+function onGradeChange() {
+  const sel = document.getElementById('grade');
+  const opt = sel.options[sel.selectedIndex];
+  const desc = opt?.dataset?.desc || '';
+  const tier = opt?.dataset?.tier || '';
+  const tierMap = { premium: 'grade-premium', high: 'grade-high', mid: 'grade-mid', base: 'grade-base' };
+  document.getElementById('gradeDesc').innerHTML = desc
+    ? `<span class="grade-badge ${tierMap[tier] || 'grade-mid'}">${tier}</span> <span class="text-gray-500">${desc}</span>`
+    : '';
+}
+
+function updateRateDisplay() {
+  const r = parseFloat(document.getElementById('jpyRate').value) || 0.0115;
+  document.getElementById('rateVal').textContent = r.toFixed(4);
+}
+
+function focusRate() { document.getElementById('jpyRate').focus(); }
+
+function updateJpyPreview() {
+  const jpy  = parseInt(document.getElementById('auctionPrice').value) || 0;
+  const rate = parseFloat(document.getElementById('jpyRate').value)    || 0.0115;
+  const nzd  = Math.round(jpy * rate);
+  document.getElementById('jpyPreview').textContent = jpy > 0 ? `≈ NZD $${nzd.toLocaleString()}` : '';
+}
+
+function updateKmHint() {
+  const km = parseInt(document.getElementById('km').value);
+  if (!km || km <= 0) { document.getElementById('kmHint').textContent = ''; return; }
+  const diff = km - 80000;
+  const pct  = ((Math.abs(diff) / 80000) * 3).toFixed(1);
+  const dir  = diff > 0 ? `高于基线 80k，约 -${pct}% 价格影响` : `低于基线 80k，约 +${pct}% 价格影响`;
+  document.getElementById('kmHint').textContent = diff !== 0 ? dir : '等于基线里程';
+}
+
+// ── Load example ────────────────────────────────────────────
+function loadExample() {
+  selectModel('alphard');
+  setTimeout(() => {
+    document.getElementById('grade').value = 'Executive Lounge';
+    onGradeChange();
+    document.getElementById('modelCode').value = 'AYH30W';
+    document.getElementById('year').value = '2017';
+    document.getElementById('km').value = '96998';
+    document.getElementById('condition').value = '4';
+    document.getElementById('auctionPrice').value = '2500000';
+    document.getElementById('jpyRate').value = '0.0115';
+    document.getElementById('location').value = 'Auckland';
+    document.getElementById('notes').value = 'JBL 19-speaker, power ottoman, rear monitor';
+    updateJpyPreview();
+    updateKmHint();
+    updateRateDisplay();
+  }, 100);
+}
+
+// ── Run evaluation ──────────────────────────────────────────
+async function runEval() {
+  const btn = document.getElementById('evalBtn');
+  if (!document.getElementById('auctionPrice').value) { alert('请输入拍卖价格'); return; }
+  if (!document.getElementById('year').value)         { alert('请输入年份'); return; }
+
+  btn.disabled = true; btn.textContent = '评估中...';
+  document.getElementById('r-empty').classList.add('hidden');
+  document.getElementById('r-results').classList.add('hidden');
+  document.getElementById('r-loading').classList.remove('hidden');
+
+  const payload = {
+    modelKey:       selectedModel,
+    grade:          document.getElementById('grade').value         || undefined,
+    modelCode:      document.getElementById('modelCode').value     || undefined,
+    year:           parseInt(document.getElementById('year').value),
+    km:             parseInt(document.getElementById('km').value)  || undefined,
+    condition:      document.getElementById('condition').value,
+    auctionPriceJpy: parseInt(document.getElementById('auctionPrice').value),
+    jpyToNzd:       parseFloat(document.getElementById('jpyRate').value) || 0.0115,
+    location:       document.getElementById('location').value,
+    notes:          document.getElementById('notes').value         || undefined,
+  };
+
+  try {
+    const resp = await fetch('/api/evaluate', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+    const data = await resp.json();
+    if (!data.success) throw new Error(data.error || 'API error');
+    lastResult = data;
+    renderResults(data);
+  } catch(err) {
+    document.getElementById('r-loading').classList.add('hidden');
+    document.getElementById('r-empty').classList.remove('hidden');
+    alert('评估失败: ' + err.message);
+  } finally {
+    btn.disabled = false; btn.textContent = '开始评估';
+  }
+}
+
+// ── Render results ──────────────────────────────────────────
+function renderResults(data) {
+  document.getElementById('r-loading').classList.add('hidden');
+  document.getElementById('r-results').classList.remove('hidden');
+
+  const { prediction, costs, profit, input } = data;
+
+  // Recommendation
+  const recMap = {
+    STRONG_BUY: { label: '强烈推荐 ✓', cls: 'pill-green' },
+    BUY:        { label: '建议竞拍 ✓',  cls: 'pill-green' },
+    CONSIDER:   { label: '可以考虑',    cls: 'pill-yellow' },
+    MARGINAL:   { label: '谨慎评估',    cls: 'pill-orange' },
+    PASS:       { label: '放弃此车',    cls: 'pill-red' },
+    NO_DATA:    { label: '数据不足',    cls: 'pill-gray' },
+  };
+  const rec = recMap[profit.recommendation] || recMap.NO_DATA;
+  document.getElementById('r-rec-text').textContent = profit.netProfit !== null
+    ? `预期净利润 $${profit.netProfit?.toLocaleString()} NZD · ROI ${profit.roi}%`
+    : '无足够数据生成建议';
+  const badge = document.getElementById('r-rec-badge');
+  badge.textContent = rec.label;
+  badge.className = `pill ${rec.cls} text-sm`;
+
+  // Key numbers
+  document.getElementById('r-nzprice').textContent = prediction.price
+    ? `$${prediction.price.toLocaleString()}`
+    : '无数据';
+  document.getElementById('r-nzrange').textContent = prediction.price
+    ? `$${prediction.low?.toLocaleString()} – $${prediction.high?.toLocaleString()}`
+    : '';
+  const confEl = document.getElementById('r-confidence');
+  const confMap = { high:'高置信度', medium:'中置信度', low:'低置信度', none:'无市场数据' };
+  confEl.textContent = confMap[prediction.confidence] || '';
+  confEl.className = `text-xs mt-1 confidence-${prediction.confidence}`;
+
+  document.getElementById('r-cost').textContent = `$${costs.totalLandedCost.toLocaleString()}`;
+
+  const profitEl = document.getElementById('r-profit');
+  const p = profit.netProfit;
+  profitEl.textContent = p !== null ? (p >= 0 ? '+' : '') + `$${p.toLocaleString()}` : '—';
+  profitEl.className = `text-xl font-bold font-mono ${p === null ? 'text-gray-500' : p >= 3000 ? 'text-green-400' : p >= 0 ? 'text-yellow-400' : 'text-red-400'}`;
+  document.getElementById('r-margin').textContent = p !== null ? `利润率 ${profit.marginPct}%` : '';
+
+  // Profit bar
+  if (prediction.price) {
+    const costPct = Math.min(98, Math.round((costs.totalLandedCost / prediction.price) * 100));
+    document.getElementById('r-costbar').style.width = costPct + '%';
+    document.getElementById('r-costpct').textContent = `成本 ${costPct}% | 利润 ${100-costPct}%`;
+  }
+
+  // Payment plan
+  document.getElementById('r-deposit').textContent = `$${costs.deposit.toLocaleString()} NZD`;
+  document.getElementById('r-balance').textContent = `$${costs.balanceDue.toLocaleString()} NZD`;
+
+  // Cost breakdown
+  const c = costs;
+  document.getElementById('rp-costs').innerHTML = `
+    <div class="text-xs text-gray-600 mb-3">汇率: ¥1 = $${c.jpyToNzdRate}</div>
+    <div class="row"><span class="text-gray-500">拍卖价 (¥${c.auctionPriceJpy?.toLocaleString()})</span><span class="font-mono">$${c.auctionPriceNzd?.toLocaleString()}</span></div>
+    <div class="row"><span class="text-gray-500">代理佣金 (8%)</span><span class="font-mono">$${c.agentCommission?.toLocaleString()}</span></div>
+    <div class="row"><span class="text-gray-500">日本国内运费</span><span class="font-mono">$${c.japanFreight?.toLocaleString()}</span></div>
+    <div class="row"><span class="text-gray-500">出口文件费</span><span class="font-mono">$${c.exportDocs?.toLocaleString()}</span></div>
+    <div class="row"><span class="text-gray-500">海运费 (RoRo)</span><span class="font-mono">$${c.shipping?.toLocaleString()}</span></div>
+    <div class="row"><span class="text-gray-500">海运保险 (0.8%)</span><span class="font-mono">$${c.insurance?.toLocaleString()}</span></div>
+    <div class="row"><span class="text-gray-500">关税 (0%, NZ-JP FTA)</span><span class="font-mono text-green-600">$0</span></div>
+    <div class="row"><span class="text-gray-500">GST 进口 (15%)</span><span class="font-mono">$${c.gst?.toLocaleString()}</span></div>
+    <div class="row"><span class="text-gray-500">NZ MAF 生物安全</span><span class="font-mono">$${c.nzMaf?.toLocaleString()}</span></div>
+    <div class="row"><span class="text-gray-500">合规认证${c.isPremiumGrade ? ' (顶配)' : ''}</span><span class="font-mono">$${c.compliance?.toLocaleString()}</span></div>
+    <div class="row"><span class="text-gray-500">WOF + 注册</span><span class="font-mono">$${(c.nzWof + c.nzRegistration)?.toLocaleString()}</span></div>
+    <div class="row"><span class="text-gray-500">银行电汇 + 杂费</span><span class="font-mono">$${(c.bankWire + c.miscAdmin)?.toLocaleString()}</span></div>
+    <div class="row row-total"><span>落地总成本</span><span class="font-mono text-orange-400">$${c.totalLandedCost?.toLocaleString()}</span></div>
+  `;
+
+  // Comparables
+  const comps = prediction.comparables || [];
+  document.getElementById('rp-comp').innerHTML = comps.length > 0
+    ? comps.map(c => `
+      <div class="comp-card">
+        <div class="flex justify-between items-start">
+          <div class="flex-1 mr-3">
+            <div class="text-white text-xs font-medium">${c.title || '—'}</div>
+            <div class="text-gray-600 text-xs mt-1">
+              ${c.year || '?'} · ${c.km ? c.km.toLocaleString() + ' km' : '里程未知'} ·
+              <span class="capitalize">${c.sellerType || 'unknown'}</span> ·
+              <span class="text-blue-500">${c.platform}</span>
+              ${c.location ? ' · ' + c.location : ''}
+            </div>
+          </div>
+          <div class="text-right shrink-0">
+            <div class="text-green-400 font-mono font-semibold">$${c.price?.toLocaleString()}</div>
+            ${c.url ? `<a href="${c.url}" target="_blank" class="text-xs text-blue-500 hover:underline">↗</a>` : ''}
+          </div>
+        </div>
+      </div>`).join('')
+    : '<div class="text-center text-gray-600 text-xs py-6">没有可比较的挂牌数据<br><span class="text-gray-700">可在「市场」页面触发 TradeMe 爬取</span></div>';
+
+  // Pricing model breakdown
+  const b = prediction.baseline?.breakdown;
+  document.getElementById('rp-model').innerHTML = b ? `
+    <div class="text-xs text-gray-600 mb-3">预测来源: <span class="text-blue-400">${prediction.source}</span></div>
+    <div class="row"><span class="text-gray-500">年份基准价 (${input.year})</span><span class="font-mono">$${b.basePrice?.toLocaleString()}</span></div>
+    <div class="row"><span class="text-gray-500">配置系数 (${input.grade || '未选'})</span><span class="font-mono">×${b.gradeFactor?.toFixed(2)} → $${b.afterGrade?.toLocaleString()}</span></div>
+    <div class="row"><span class="text-gray-500">里程调整 (${(input.km||0).toLocaleString()} km)</span><span class="font-mono">→ $${b.afterMileage?.toLocaleString()}</span></div>
+    <div class="row"><span class="text-gray-500">动力加成</span><span class="font-mono">${b.enginePremium}</span></div>
+    <div class="row"><span class="text-gray-500">车况调整 (${input.condition})</span><span class="font-mono">×${b.conditionFactor?.toFixed(2)}</span></div>
+    ${prediction.marketCorrection ? `<div class="row"><span class="text-gray-500">KNN 市场修正 (${prediction.sampleCount} 条数据)</span><span class="font-mono">×${prediction.marketCorrection?.toFixed(3)}</span></div>` : ''}
+    ${prediction.locationFactor !== 1 ? `<div class="row"><span class="text-gray-500">位置折价</span><span class="font-mono">×${prediction.locationFactor?.toFixed(2)}</span></div>` : ''}
+    <div class="row row-total"><span>最终预测售价</span><span class="font-mono text-white">$${prediction.price?.toLocaleString()}</span></div>
+    <div class="mt-3 p-3 bg-gray-900/50 rounded text-xs text-gray-600">
+      定价方法: 规则基准价 (NZ TradeMe 2024-25 历史成交价)
+      ${prediction.sampleCount > 0 ? `+ KNN 市场修正 (${prediction.sampleCount} 条真实挂牌，修正幅度上限 ±25%)` : '(未找到市场数据，纯规则预测)'}
+    </div>
+  ` : '<div class="text-gray-600 text-xs">暂无详细分解数据</div>';
+}
+
+function showResultTab(name) {
+  ['costs','comp','model'].forEach(t => {
+    document.getElementById('rp-' + t).classList.toggle('hidden', t !== name);
+    document.getElementById('rt-' + t).classList.toggle('on', t === name);
+  });
+}
+
+// ── Add to pipeline ─────────────────────────────────────────
+async function addToPipeline() {
+  if (!lastResult) return;
+  const { costs, profit, input, evaluationId } = lastResult;
+  const body = {
+    modelKey:        input.modelKey,
+    grade:           input.grade,
+    modelCode:       input.modelCode,
+    year:            input.year,
+    km:              input.km,
+    condition:       input.condition,
+    auctionPriceJpy: costs.auctionPriceJpy,
+    auctionPriceNzd: costs.auctionPriceNzd,
+    estimatedNzPrice: lastResult.prediction.price,
+    totalLandedCost: costs.totalLandedCost,
+    netProfit:       profit.netProfit,
+    recommendation:  profit.recommendation,
+    evaluationId,
+  };
+  try {
+    const r = await fetch('/api/pipeline', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
+    const d = await r.json();
+    if (d.success) {
+      document.getElementById('r-addpipeline').textContent = '✓ 已加入管道';
+      document.getElementById('r-addpipeline').disabled = true;
+    }
+  } catch(e) { alert('加入管道失败: ' + e.message); }
+}
+
+// ── Pipeline ────────────────────────────────────────────────
+const STATUSES = [
+  { key:'evaluating', label:'评估中',  color:'#60a5fa' },
+  { key:'bidding',    label:'竞拍中',  color:'#fbbf24' },
+  { key:'won',        label:'已拍到',  color:'#34d399' },
+  { key:'shipping',   label:'运输中',  color:'#94a3b8' },
+  { key:'arrived',    label:'已到港',  color:'#818cf8' },
+  { key:'compliance', label:'合规中',  color:'#c084fc' },
+  { key:'for_sale',   label:'已挂牌',  color:'#22d3ee' },
+  { key:'sold',       label:'已售出',  color:'#6ee7b7' },
+];
+
+async function loadPipeline() {
+  try {
+    const [pipeR, sumR] = await Promise.all([
+      fetch('/api/pipeline').then(r => r.json()),
+      fetch('/api/pipeline/summary').then(r => r.json()),
+    ]);
+
+    // Summary cards
+    if (sumR.success) {
+      const s = sumR.summary;
+      document.getElementById('pipeline-summary').innerHTML = `
+        <div class="card p-4 text-center"><div class="text-xs text-gray-600 mb-1">总车辆</div><div class="text-2xl font-bold">${s.totalCars}</div></div>
+        <div class="card p-4 text-center"><div class="text-xs text-gray-600 mb-1">在途车辆</div><div class="text-2xl font-bold text-blue-400">${(s.byStatus.won||0)+(s.byStatus.shipping||0)+(s.byStatus.arrived||0)+(s.byStatus.compliance||0)}</div></div>
+        <div class="card p-4 text-center"><div class="text-xs text-gray-600 mb-1">总投入</div><div class="text-xl font-bold text-orange-400 font-mono">${s.totalInvested ? '$' + Math.round(s.totalInvested/1000) + 'k' : '—'}</div></div>
+        <div class="card p-4 text-center"><div class="text-xs text-gray-600 mb-1">已实现利润</div><div class="text-xl font-bold ${s.totalProfit >= 0 ? 'text-green-400' : 'text-red-400'} font-mono">${s.totalProfit ? (s.totalProfit>=0?'+':'')+' $'+Math.abs(Math.round(s.totalProfit/1000))+'k' : '—'}</div></div>
+      `;
+    }
+
+    // Kanban board
+    const items = pipeR.pipeline || [];
+    const byStatus = {};
+    STATUSES.forEach(s => byStatus[s.key] = []);
+    items.forEach(i => { if (byStatus[i.status]) byStatus[i.status].push(i); });
+
+    document.getElementById('pipeline-board').innerHTML = STATUSES.map(s => `
+      <div class="kancol">
+        <div class="text-xs font-bold mb-3 flex items-center gap-1">
+          <span class="status-dot" style="background:${s.color}"></span>
+          <span style="color:${s.color}">${s.label}</span>
+          <span class="text-gray-700">(${byStatus[s.key].length})</span>
+        </div>
+        ${byStatus[s.key].map(car => `
+          <div class="kancard" onclick="openPipelineCard('${car.id}')">
+            <div class="font-semibold text-white" style="font-size:11px">${car.model} ${car.year}</div>
+            ${car.grade ? `<div class="text-gray-600" style="font-size:10px">${car.grade}</div>` : ''}
+            <div class="text-gray-500 mt-1" style="font-size:10px">${car.km ? car.km.toLocaleString() + ' km' : '—'}</div>
+            <div class="font-mono text-blue-400 mt-1" style="font-size:11px">¥${car.auction_price_jpy?.toLocaleString() || '—'}</div>
+            ${car.net_profit !== null && car.net_profit !== undefined ? `<div class="font-mono ${car.net_profit >= 0 ? 'text-green-400' : 'text-red-400'}" style="font-size:10px">${car.net_profit >= 0 ? '+' : ''}$${car.net_profit.toLocaleString()}</div>` : ''}
+          </div>
+        `).join('')}
+      </div>
+    `).join('');
+
+    if (items.length === 0) {
+      document.getElementById('pipeline-board').innerHTML = '<div class="col-span-8 text-center text-gray-600 text-xs py-10">暂无车辆。完成评估后点击「加入管道」。</div>';
+    }
+  } catch(e) {
+    console.error(e);
+  }
+}
+
+function openPipelineCard(id) {
+  // TODO: 打开详情/编辑弹窗
+  console.log('Pipeline card:', id);
+}
+
+// ── Market ──────────────────────────────────────────────────
+async function loadMarket(modelKey) {
+  document.querySelectorAll('.market-tab').forEach(b => {
+    b.classList.toggle('on', b.dataset.model === modelKey);
+  });
+  document.getElementById('market-list').innerHTML = '<div class="text-center text-gray-600 text-xs py-8">加载中...</div>';
+  document.getElementById('market-stats').innerHTML = '';
+
+  try {
+    const r = await fetch(`/api/market/listings/${modelKey}?limit=50`);
+    const d = await r.json();
+    if (!d.success) throw new Error(d.error);
+
+    const { listings, stats } = d;
+
+    if (stats) {
+      document.getElementById('market-stats').innerHTML = `
+        <div class="card p-4 text-center"><div class="text-xs text-gray-600 mb-1">挂牌数量</div><div class="text-xl font-bold">${stats.count}</div></div>
+        <div class="card p-4 text-center"><div class="text-xs text-gray-600 mb-1">中位价</div><div class="text-xl font-bold font-mono text-green-400">$${stats.median?.toLocaleString()}</div></div>
+        <div class="card p-4 text-center"><div class="text-xs text-gray-600 mb-1">最低</div><div class="text-xl font-bold font-mono text-blue-400">$${stats.min?.toLocaleString()}</div></div>
+        <div class="card p-4 text-center"><div class="text-xs text-gray-600 mb-1">最高</div><div class="text-xl font-bold font-mono text-orange-400">$${stats.max?.toLocaleString()}</div></div>
+      `;
+    } else {
+      document.getElementById('market-stats').innerHTML = `<div class="col-span-4 card p-4 text-center text-gray-600 text-xs">暂无数据。点击右上角「触发爬取」获取 TradeMe 最新挂牌。</div>`;
+    }
+
+    document.getElementById('market-list').innerHTML = listings.length > 0
+      ? listings.map(l => `
+        <div class="comp-card flex justify-between items-start">
+          <div class="flex-1 mr-4">
+            <div class="text-white text-sm font-medium">${l.title || '—'}</div>
+            <div class="text-gray-600 text-xs mt-1">
+              ${l.year || '?'} · ${l.km ? l.km.toLocaleString() + ' km' : '里程未知'} ·
+              ${l.grade || ''} ·
+              <span class="capitalize">${l.seller_type || 'unknown'}</span>
+              ${l.location ? ' · ' + l.location : ''}
+              <span class="text-blue-500"> · ${l.platform}</span>
+            </div>
+          </div>
+          <div class="text-right shrink-0">
+            <div class="text-green-400 font-mono font-semibold text-lg">$${l.price?.toLocaleString()}</div>
+            ${l.url ? `<a href="${l.url}" target="_blank" class="text-xs text-blue-500 hover:underline">TradeMe ↗</a>` : ''}
+            <div class="text-gray-700 text-xs mt-1">${l.scraped_at ? new Date(l.scraped_at).toLocaleDateString('zh-CN') : ''}</div>
+          </div>
+        </div>
+      `).join('')
+      : '<div class="text-center text-gray-600 text-xs py-10">没有挂牌数据。点击右上角触发 TradeMe 爬取。</div>';
+  } catch(e) {
+    document.getElementById('market-list').innerHTML = `<div class="text-center text-red-500 text-xs py-8">${e.message}</div>`;
+  }
+}
+
+async function triggerScrape() {
+  const btn = event.target;
+  btn.disabled = true; btn.textContent = '爬取中...';
+  try {
+    const r = await fetch('/api/market/scrape', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ models: ['alphard', 'vellfire', 'prius'], pages: 2 }),
+    });
+    const d = await r.json();
+    alert(d.message || '爬取任务已启动，约 5-10 分钟后刷新查看结果。');
+  } catch(e) {
+    alert('触发失败: ' + e.message);
+  } finally {
+    btn.disabled = false; btn.textContent = '🔄 触发爬取';
+  }
+}
+
+// ── Boot ────────────────────────────────────────────────────
+init();
+</script>
+</body>
+</html>

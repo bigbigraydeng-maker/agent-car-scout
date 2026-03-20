@@ -1,91 +1,42 @@
-/**
- * Agent Car Scout - 主服务器
- * 
- * 功能：
- *   1. 提供API接口
- *   2. 管理爬取任务
- *   3. 处理估价请求
- *   4. 提供系统状态监控
- */
-
 require('dotenv').config();
 const express = require('express');
-const cors = require('cors');
-const helmet = require('helmet');
-const morgan = require('morgan');
+const cors    = require('cors');
+const helmet  = require('helmet');
+const morgan  = require('morgan');
+const path    = require('path');
 
-// 路由
-const apiRoutes = require('./api/routes');
+const apiRoutes = require('./api');
 
-// 服务
-const scraperService = require('./services/scraper');
-const valuationService = require('./services/valuation');
-const trainingService = require('./services/training');
-
-const app = express();
+const app  = express();
 const PORT = process.env.PORT || 3000;
 
-// 中间件
-app.use(helmet());
+app.use(helmet({ contentSecurityPolicy: false }));
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: '5mb' }));
 app.use(express.urlencoded({ extended: true }));
-app.use(morgan('combined'));
+app.use(morgan('dev'));
 
-// 静态文件
-app.use(express.static('public'));
+// 静态文件 (前端)
+app.use(express.static(path.join(__dirname, '../public')));
 
-// API路由
+// API 路由
 app.use('/api', apiRoutes);
 
 // 健康检查
-app.get('/health', (req, res) => {
-  res.json({
-    status: 'ok',
-    timestamp: new Date().toISOString(),
-    service: 'agent-car-scout'
-  });
+app.get('/health', (req, res) => res.json({ status: 'ok', ts: new Date().toISOString() }));
+
+// SPA fallback — 所有非 API 路径返回 index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
-// 根路径
-app.get('/', (req, res) => {
-  res.json({
-    message: 'Agent Car Scout API',
-    version: '3.0.0',
-    endpoints: {
-      health: '/health',
-      api: '/api',
-      scrape: '/api/scrape',
-      valuate: '/api/valuate',
-      train: '/api/train'
-    }
-  });
-});
-
-// 404处理
-app.use((req, res) => {
-  res.status(404).json({
-    error: 'Not found'
-  });
-});
-
-// 错误处理
 app.use((err, req, res, next) => {
-  console.error('Error:', err);
-  res.status(500).json({
-    error: 'Internal server error',
-    message: process.env.NODE_ENV === 'development' ? err.message : 'Something went wrong'
-  });
+  console.error(err);
+  res.status(500).json({ error: 'Internal server error', message: err.message });
 });
 
-// 启动服务器
 app.listen(PORT, () => {
-  console.log(`🚀 Agent Car Scout server running on port ${PORT}`);
-  console.log(`📊 Health check: http://localhost:${PORT}/health`);
-  
-  // 启动定时训练任务
-  trainingService.startScheduledTraining();
-  console.log('⏰ Scheduled training started');
+  console.log(`🚗 Car Scout v4 running on port ${PORT}`);
 });
 
 module.exports = app;
