@@ -1,7 +1,3 @@
-/**
- * Supabase 配置
- */
-
 const { createClient } = require('@supabase/supabase-js');
 
 const supabaseUrl        = process.env.SUPABASE_URL;
@@ -35,8 +31,9 @@ const TABLES = {
   SCRAPING_JOBS:    'scraping_jobs',
 };
 
-module.exports = {
+// 为了兼容性，同时导出 supabaseAdmin 和 supabase
+module.exports = { 
   supabase,
-  supabaseAdmin,
-  TABLES
+  supabaseAdmin: supabase,
+  TABLES 
 };

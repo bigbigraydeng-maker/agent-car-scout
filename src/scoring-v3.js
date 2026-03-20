@@ -478,7 +478,22 @@ function scoreNegotiation(vehicle) {
 // ═══════════════════════════════════════════
 
 function calculateFlipScore(vehicle) {
-  if (vehicle.mileage > 160000) return null;
+  // 里程处理：未提取到时尝试从description解析，否则使用保守默认值
+  let mileage = vehicle.mileage || 0;
+  if (mileage === 0 && vehicle.description) {
+    const desc = vehicle.description.toLowerCase();
+    // 尝试匹配 "229xxx" 格式
+    const xxxMatch = desc.match(/(\d{2,3})(xxx|XXX)\b/);
+    if (xxxMatch) {
+      mileage = parseInt(xxxMatch[1]) * 1000;
+    }
+  }
+  // 如果仍未获取到里程，使用保守默认值130,000（影响利润预估）
+  if (mileage === 0) {
+    mileage = 130000;
+  }
+  
+  if (mileage > 160000) return null;
   if (vehicle.year < 2005) return null;
   if (vehicle.price < 2500 || vehicle.price > 8000) return null;
   if (hasMechanicalIssue(vehicle.description)) return null;
@@ -487,7 +502,7 @@ function calculateFlipScore(vehicle) {
   const predictionResult = getPredictedPrice(
     vehicle.model, 
     vehicle.year, 
-    vehicle.mileage, 
+    mileage, 
     vehicle.location
   );
   

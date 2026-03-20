@@ -1,0 +1,19 @@
+{
+  "name": "car-scout",
+  "version": "3.0.0",
+  "description": "Agent Car Scout - 多平台车辆数据爬取和市场估价系统",
+  "author": "Agent Car Scout Team",
+  "endpoints": {
+    "api": "https://agent-car-scout.onrender.com/api",
+    "health": "https://agent-car-scout.onrender.com/health"
+  },
+  "capabilities": [
+    "scrape",
+    "valuate",
+    "train",
+    "report"
+  ],
+  "configuration": {
+    "apiKey": "agent_car_scout_api_key"
+  }
+}

@@ -236,6 +236,12 @@ async function scrapeDetail(page, url) {
         const revKm = bodyText.match(/\bkms?\s*[:=]\s*([\d,]+)\+?/i);
         if (revKm) { const km = parseInt(revKm[1].replace(/,/g, '')); if (km >= 10000 && km <= 500000) mileage = km; }
       }
+      
+      // Pattern 6: "229xxx" or "229XXX" (shorthand for thousands)
+      if (!mileage) {
+        const xxxKm = bodyText.match(/\b(\d{2,3})(xxx|XXX)\b/i);
+        if (xxxKm) { const km = parseInt(xxxKm[1]) * 1000; if (km >= 10000 && km <= 500000) mileage = km; }
+      }
 
       // Manual transmission
       const isManual = /\bmanual\s*(trans|gear|gearbox|car|vehicle)?\b|(?:5|6)\s*-?\s*speed\s*(manual)?|stick\s*shift/i.test(bodyText)
